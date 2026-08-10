@@ -95,10 +95,10 @@ const App = {
     });
 
     document.getElementById("btn-record").addEventListener("click", async (e) => {
-      e.target.textContent = "認識中...";
+      e.target.textContent = "👂 聞き取り中...（話しかけてください）";
       e.target.disabled = true;
       await PracticeController.recordShadowing();
-      e.target.textContent = "● 録音開始";
+      e.target.textContent = "🎤 話してみる（タップして発音）";
       e.target.disabled = false;
     });
 

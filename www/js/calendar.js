@@ -5,7 +5,7 @@ const CalendarService = {
   /**
    * 直近N日分のミニカレンダーをホーム画面に描画
    */
-  async renderMini(containerEl, days = 21) {
+  async renderMini(containerEl, days = 14) {
     const records = await StorageService.getDailyRecords();
     containerEl.innerHTML = "";
     const today = new Date();

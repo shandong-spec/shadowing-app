@@ -93,6 +93,8 @@ const PracticeController = {
     }
   },
 
+  // Step3は「録音」ではなく、SpeechRecognizerによる一発勝負の音声認識。
+  // 無音/認識失敗時はOS側が数秒でタイムアウトし、エラーとして返ってくる（仕様通り）。
   async recordShadowing() {
     const segment = this.article.segments[this.segmentIndex];
     try {

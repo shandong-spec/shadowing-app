@@ -172,6 +172,7 @@ h2 { font-size: 17px; margin: 0 0 12px; }
 
 .day-cell {
   aspect-ratio: 1;
+  max-height: 24px;
   border-radius: 3px;
   background: var(--grid-empty);
 }
