@@ -1,45 +1,46 @@
 {
   "date": "2026-08-10",
-  "title": "Understanding Fold and Bluff in Texas Hold'em Poker",
-  "summaryJa": "テキサスホールデムの「フォールド」は自分のハンドを降りることで、「ブラフ」は弱いハンドで他のプレイヤーを騙す戦略です。この二つの基本的な用語を理解することでポーカーの楽しさが増します。",
+  "title": "Understanding Two Key Poker Terms: Fold and Bluff",
+  "summaryJa": "ポーカーの「フォールド」は自分のハンドを降りることで、「ブラフ」は弱いハンドで勝つために嘘をつく戦術です。これらはテキサスホールデムで非常に重要な基本的な用語です。",
   "segments": [
-    "Texas Hold'em poker has many important words to learn. Two common words are fold and bluff.",
-    "These words help players understand the game better. Let me explain what each word means and how players use them.",
-    "Fold means to stop playing your hand. When you fold, you give up your cards and leave the game for that round.",
-    "You lose any money you already put in the pot. Why do players fold?",
-    "When your cards are not good, it is smart to fold. This saves your money for a better hand later.",
-    "For example, you have two low cards. The player before you bets a lot of money.",
-    "You decide to fold. You put your cards down and save your money.",
-    "Bluff is different from fold. A bluff means you bet with a weak hand to trick other players.",
-    "You want them to think your cards are very good. Then they fold their cards.",
-    "You win the pot even though your hand is not the best. For example, you have bad cards.",
-    "But you bet a large amount. Another player thinks you have very good cards.",
-    "They get scared and fold. You win the money in the pot.",
-    "Good poker players use fold and bluff at the right times. Folding too much means you never win pots.",
-    "But bluffing too much means other players will not believe you. Smart players balance these two moves.",
-    "They fold when the time is right. They bluff sometimes but not always.",
-    "This helps them win more games."
+    "In Texas Hold'em poker, two important words are fold and bluff. New players must understand these terms.",
+    "They help you make good decisions at the table. To fold means to quit the current hand.",
+    "You throw your cards away. You do not play anymore in that round.",
+    "For example, the dealer shows the flop. You see three community cards.",
+    "You have a weak hand. Another player bets a lot of money.",
+    "You decide not to win this hand. You fold.",
+    "You lose any money you already put in the pot. But you stop losing more money.",
+    "A bluff is different. A bluff means you bet or raise when your hand is weak.",
+    "You want other players to think you have a strong hand. They may fold instead of playing.",
+    "Then you win the pot without showing your cards. For example, you have very bad cards before the flop.",
+    "But you are in a good position. You bet big money like you have a great hand.",
+    "Other players are afraid. They fold.",
+    "You win their money. Your weak hand wins the round.",
+    "Fold and bluff are opposite ideas. When you fold, you give up.",
+    "When you bluff, you fight. Good players use both strategies at the right time.",
+    "Knowing when to fold saves money. Knowing when to bluff wins money.",
+    "Practice these skills to become a better poker player."
   ],
   "keywords": [
     {
       "term": "fold",
-      "emoji": "🚫"
+      "emoji": "🛑"
     },
     {
       "term": "bluff",
       "emoji": "🎭"
     },
     {
+      "term": "flop",
+      "emoji": "🃏"
+    },
+    {
       "term": "pot",
       "emoji": "💰"
     },
     {
-      "term": "cards",
-      "emoji": "🃏"
-    },
-    {
-      "term": "bet",
-      "emoji": "💸"
+      "term": "hand",
+      "emoji": "✋"
     }
   ],
   "source": "AI-generated (Claude)"
