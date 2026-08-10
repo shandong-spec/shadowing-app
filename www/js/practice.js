@@ -5,8 +5,9 @@
 // プラグイン未導入時（Web確認時）はモックで動作確認できるようにしている。
 // 使用プラグイン:
 //   - お手本読み上げ: @capacitor-community/text-to-speech
-//   - アウトプット録音: capacitor-voice-recorder + @capacitor/filesystem（ファイル保存）
-//   - シャドーイング音声認識: @capacitor-community/speech-recognition（未実装・モックのまま）
+//   - アウトプット録音(Step5): capacitor-voice-recorder + @capacitor/filesystem（ファイル保存）
+//   - シャドーイング音声認識(Step3): @capacitor-community/speech-recognition
+//   - シャドーイング音声録音(Step3): capacitor-voice-recorder（音声認識と並行して開始・終了する）
 
 const PracticeController = {
   article: null,
@@ -58,6 +59,10 @@ const PracticeController = {
     document.getElementById("btn-record-output").textContent = "● 録音開始";
     document.getElementById("btn-record-output").disabled = false;
     document.getElementById("output-recording-status").classList.add("hidden");
+    document.getElementById("output-recording-status").classList.remove("save-warning");
+
+    // Step3: 前セグメントの保存失敗メッセージが残らないようにリセット
+    document.getElementById("shadowing-recording-status").classList.add("hidden");
 
     this._showStep("meaning");
   },
@@ -93,10 +98,28 @@ const PracticeController = {
     }
   },
 
-  // Step3は「録音」ではなく、SpeechRecognizerによる一発勝負の音声認識。
+  // Step3のボタン文言は「録音」ではないが、SpeechRecognizerによる音声認識と並行して
+  // capacitor-voice-recorderでも録音し、後で聞き返せるように保存する。
   // 無音/認識失敗時はOS側が数秒でタイムアウトし、エラーとして返ってくる（仕様通り）。
   async recordShadowing() {
     const segment = this.article.segments[this.segmentIndex];
+    const plugins = window.Capacitor?.Plugins ?? {};
+    const canRecordAudio = !!plugins.VoiceRecorder;
+    let audioRecordingStarted = false;
+
+    if (canRecordAudio) {
+      try {
+        const permission = await plugins.VoiceRecorder.requestAudioRecordingPermission();
+        if (permission?.value) {
+          await plugins.VoiceRecorder.startRecording();
+          audioRecordingStarted = true;
+        }
+      } catch (e) {
+        // 音声認識自体は録音の成否に関わらず続行する
+        console.warn("シャドーイング音声の録音開始に失敗（音声認識は続行します）:", e);
+      }
+    }
+
     try {
       const recognizedText = await this._recognizeSpeech();
       this.lastRecognizedText = recognizedText;
@@ -106,7 +129,74 @@ const PracticeController = {
       this.lastRecognizedText = "";
       this.lastScore = 0;
     }
+
+    const statusEl = document.getElementById("shadowing-recording-status");
+    if (audioRecordingStarted) {
+      try {
+        const result = await plugins.VoiceRecorder.stopRecording();
+        const { recordDataBase64, mimeType, msDuration } = result.value;
+
+        const isValid = await this._isRecordingValid(recordDataBase64, mimeType, msDuration);
+        if (!isValid) {
+          // SpeechRecognitionとの同時録音は稀に破損したデータを返すことがある（実測で約1割）。
+          // 破損データを保存しても再生できないだけなので、スコアには一切影響を与えずスキップする。
+          console.warn(`シャドーイング音声が破損している可能性があるため保存をスキップします（報告時間${msDuration}ms）`);
+          this._showSaveWarning(statusEl);
+        } else {
+          const filePath = await this._saveRecordingFile(recordDataBase64, mimeType, "shadowing");
+          await StorageService.addShadowingRecording(
+            StorageService._dateKey(new Date()),
+            this.article.id,
+            this.segmentIndex,
+            filePath,
+            this.article.title,
+            mimeType,
+            segment,
+            this.lastScore
+          );
+        }
+      } catch (e) {
+        // capacitor-voice-recorderとSpeechRecognitionの同時利用はマイクリソースが競合し、
+        // 稀にFAILED_TO_FETCH_RECORDING等で失敗することがある（実測で約4割）。
+        // スコアには影響させず、音声保存のみ失敗として扱う。
+        console.warn("シャドーイング音声の保存に失敗（スコアには影響しません）:", e);
+        this._showSaveWarning(statusEl);
+      }
+    }
+
     document.getElementById("btn-to-feedback").classList.remove("hidden");
+  },
+
+  _showSaveWarning(statusEl) {
+    if (!statusEl) return;
+    statusEl.textContent = "今回は音声を保存できませんでした（スコアは記録されています）";
+    statusEl.classList.add("save-warning");
+    statusEl.classList.remove("hidden");
+  },
+
+  // stopRecording()が返すmsDurationと、実際にデコードできる再生時間を突き合わせて
+  // 録音データが破損していないか検証する。SpeechRecognitionとの同時録音時のみ発生しうる。
+  async _isRecordingValid(base64Data, mimeType, msDuration) {
+    if (!msDuration || msDuration <= 0) return false;
+    const actualMs = await this._measureAudioDurationMs(base64Data, mimeType);
+    // 大きく乖離（半分未満）していたら破損とみなす
+    return actualMs >= msDuration * 0.5;
+  },
+
+  _measureAudioDurationMs(base64Data, mimeType) {
+    return new Promise((resolve) => {
+      const audio = new Audio(`data:${mimeType};base64,${base64Data}`);
+      let settled = false;
+      const finish = (ms) => {
+        if (settled) return;
+        settled = true;
+        resolve(ms);
+      };
+      audio.addEventListener("loadedmetadata", () => finish((audio.duration || 0) * 1000));
+      audio.addEventListener("error", () => finish(0));
+      // 一部環境ではloadedmetadataが発火しないことがあるためフォールバック
+      setTimeout(() => finish((audio.duration || 0) * 1000), 1500);
+    });
   },
 
   async _recognizeSpeech() {
@@ -174,38 +264,45 @@ const PracticeController = {
     btn.disabled = true;
     try {
       const result = await plugins.VoiceRecorder.stopRecording();
-      const { recordDataBase64, mimeType } = result.value;
-      const filePath = await this._saveOutputRecording(recordDataBase64, mimeType);
+      const { recordDataBase64, mimeType, msDuration } = result.value;
 
-      await StorageService.addOutputRecording(
-        StorageService._dateKey(new Date()),
-        this.article.id,
-        this.segmentIndex,
-        filePath,
-        this.article.title,
-        mimeType
-      );
-
-      btn.textContent = "✓ 録音済み";
+      const isValid = await this._isRecordingValid(recordDataBase64, mimeType, msDuration);
+      if (!isValid) {
+        console.warn(`アウトプット音声が破損している可能性があるため保存をスキップします（報告時間${msDuration}ms）`);
+        btn.textContent = "● 録音開始";
+        this._showSaveWarning(status);
+      } else {
+        const filePath = await this._saveRecordingFile(recordDataBase64, mimeType, "recordings");
+        await StorageService.addOutputRecording(
+          StorageService._dateKey(new Date()),
+          this.article.id,
+          this.segmentIndex,
+          filePath,
+          this.article.title,
+          mimeType
+        );
+        btn.textContent = "✓ 録音済み";
+        status?.classList.add("hidden");
+      }
     } catch (e) {
-      console.error("録音の保存に失敗:", e);
-      alert("録音の保存に失敗しました。");
+      console.warn("録音の保存に失敗:", e);
       btn.textContent = "● 録音開始";
+      this._showSaveWarning(status);
     } finally {
       this.isRecordingOutput = false;
-      status?.classList.add("hidden");
       btn.disabled = false;
     }
   },
 
-  async _saveOutputRecording(base64Data, mimeType) {
+  // Step3(shadowing/)・Step5(recordings/)共通の録音ファイル保存処理。
+  async _saveRecordingFile(base64Data, mimeType, subDir) {
     const { Filesystem } = window.Capacitor.Plugins;
     // 実際の拡張子・MIMEタイプはプラットフォーム依存（Android/iOSは audio/aac、Web(Chrome)は audio/webm 等）。
     // 固定で.wav扱いにすると再生できないため、プラグインが返すmimeTypeをそのまま使う。
     const ext = (mimeType.split("/")[1] || "m4a").split(";")[0];
     const dateKey = StorageService._dateKey(new Date());
     const fileName = `${dateKey}_${this.article.id}_${this.segmentIndex}.${ext}`;
-    const filePath = `recordings/${fileName}`;
+    const filePath = `${subDir}/${fileName}`;
 
     await Filesystem.writeFile({
       path: filePath,

@@ -148,10 +148,11 @@ const App = {
         .join("");
     }
 
-    await this._renderMyRecordings();
+    await this._renderOutputRecordings();
+    await this._renderShadowingRecordings();
   },
 
-  async _renderMyRecordings() {
+  async _renderOutputRecordings() {
     const recordings = await StorageService.getOutputRecordings();
     const container = document.getElementById("my-recordings-list");
 
@@ -168,19 +169,47 @@ const App = {
             <div>${this._escape(r.title || "")}</div>
             <p class="hint">${r.date ?? ""}</p>
           </div>
-          <button class="play-recording-btn" data-index="${i}" aria-label="再生">▶</button>
+          <button class="play-recording-btn" data-list="output" data-index="${i}" aria-label="再生">▶</button>
         </div>
       `
       )
       .join("");
   },
 
+  async _renderShadowingRecordings() {
+    const recordings = await StorageService.getShadowingRecordings();
+    const container = document.getElementById("shadowing-recordings-list");
+
+    if (recordings.length === 0) {
+      container.innerHTML = `<p class="hint">まだ録音がありません。</p>`;
+      return;
+    }
+
+    container.innerHTML = recordings
+      .map((r, i) => {
+        const scoreText = r.score != null ? ` ・ 伝わる度 ${r.score}点` : "";
+        return `
+        <div class="card recording-item">
+          <div>
+            <div>${this._escape(r.title || "")}</div>
+            <p class="hint">${r.date ?? ""}${scoreText}</p>
+          </div>
+          <button class="play-recording-btn" data-list="shadowing" data-index="${i}" aria-label="再生">▶</button>
+        </div>
+      `;
+      })
+      .join("");
+  },
+
   _wireHistory() {
-    document.getElementById("my-recordings-list").addEventListener("click", async (e) => {
+    document.getElementById("view-history").addEventListener("click", async (e) => {
       const btn = e.target.closest(".play-recording-btn");
       if (!btn) return;
 
-      const recordings = await StorageService.getOutputRecordings();
+      const recordings =
+        btn.dataset.list === "shadowing"
+          ? await StorageService.getShadowingRecordings()
+          : await StorageService.getOutputRecordings();
       const rec = recordings[Number(btn.dataset.index)];
       if (!rec) return;
 

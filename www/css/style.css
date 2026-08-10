@@ -143,6 +143,11 @@ h2 { font-size: 17px; margin: 0 0 12px; }
   color: var(--color-danger);
 }
 
+.recording-status.save-warning {
+  color: #a06a00;
+  font-weight: 500;
+}
+
 .recording-item {
   margin-bottom: 12px;
   display: flex;

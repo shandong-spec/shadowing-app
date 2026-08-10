@@ -4,7 +4,8 @@
 //   articles_cache     -> 取得済み記事リスト(JSON)
 //   daily_records      -> { "2026-08-10": { status: "full", segmentsDone: 3, totalSegments: 3, scores: [82, 90] }, ... }
 //   streak_count       -> 数値
-//   output_recordings  -> [{ date, articleId, segmentIndex, filePath, title, mimeType }, ...]（新しい順）
+//   output_recordings  -> [{ date, articleId, segmentIndex, filePath, title, mimeType }, ...]（新しい順・Step5）
+//   shadowing_recordings -> [{ date, articleId, segmentIndex, filePath, title, mimeType, segmentText, score }, ...]（新しい順・Step3）
 //                         音声本体は@capacitor/filesystemでファイル保存し、ここには軽量なメタデータのみ持つ
 
 const StorageService = {
@@ -90,6 +91,17 @@ const StorageService = {
     const recordings = await this.getOutputRecordings();
     recordings.unshift({ date, articleId, segmentIndex, filePath, title, mimeType });
     await this.set("output_recordings", recordings);
+    return recordings;
+  },
+
+  async getShadowingRecordings() {
+    return (await this.get("shadowing_recordings")) ?? [];
+  },
+
+  async addShadowingRecording(date, articleId, segmentIndex, filePath, title, mimeType, segmentText, score) {
+    const recordings = await this.getShadowingRecordings();
+    recordings.unshift({ date, articleId, segmentIndex, filePath, title, mimeType, segmentText, score });
+    await this.set("shadowing_recordings", recordings);
     return recordings;
   },
 
