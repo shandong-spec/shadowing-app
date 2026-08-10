@@ -1,0 +1,46 @@
+{
+  "date": "2026-08-10",
+  "title": "Understanding Fold and Bluff in Texas Hold'em Poker",
+  "summaryJa": "テキサスホールデムの「フォールド」は自分のハンドを降りることで、「ブラフ」は弱いハンドで他のプレイヤーを騙す戦略です。この二つの基本的な用語を理解することでポーカーの楽しさが増します。",
+  "segments": [
+    "Texas Hold'em poker has many important words to learn. Two common words are fold and bluff.",
+    "These words help players understand the game better. Let me explain what each word means and how players use them.",
+    "Fold means to stop playing your hand. When you fold, you give up your cards and leave the game for that round.",
+    "You lose any money you already put in the pot. Why do players fold?",
+    "When your cards are not good, it is smart to fold. This saves your money for a better hand later.",
+    "For example, you have two low cards. The player before you bets a lot of money.",
+    "You decide to fold. You put your cards down and save your money.",
+    "Bluff is different from fold. A bluff means you bet with a weak hand to trick other players.",
+    "You want them to think your cards are very good. Then they fold their cards.",
+    "You win the pot even though your hand is not the best. For example, you have bad cards.",
+    "But you bet a large amount. Another player thinks you have very good cards.",
+    "They get scared and fold. You win the money in the pot.",
+    "Good poker players use fold and bluff at the right times. Folding too much means you never win pots.",
+    "But bluffing too much means other players will not believe you. Smart players balance these two moves.",
+    "They fold when the time is right. They bluff sometimes but not always.",
+    "This helps them win more games."
+  ],
+  "keywords": [
+    {
+      "term": "fold",
+      "emoji": "🚫"
+    },
+    {
+      "term": "bluff",
+      "emoji": "🎭"
+    },
+    {
+      "term": "pot",
+      "emoji": "💰"
+    },
+    {
+      "term": "cards",
+      "emoji": "🃏"
+    },
+    {
+      "term": "bet",
+      "emoji": "💸"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}
