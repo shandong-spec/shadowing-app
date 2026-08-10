@@ -46,7 +46,7 @@ const App = {
       this.todayArticle = await this._loadTodayArticle();
       container.innerHTML = `
         <h3>${this._escape(this.todayArticle.title)}</h3>
-        <p class="hint">${this.todayArticle.segments.length}セグメント / ${this.todayArticle.pubDate}</p>
+        <p class="hint">${this.todayArticle.segments.length}セグメント / ${this.todayArticle.date}</p>
       `;
       startBtn.disabled = false;
     } catch (e) {
@@ -58,41 +58,15 @@ const App = {
   },
 
   async _loadTodayArticle() {
-    // まずキャッシュを確認し、未取得 or 古い場合はRSSから再取得
+    // まずキャッシュを確認し、未取得 or 古い場合はGitHub Pages(latest.json)から再取得
     const cache = await StorageService.getArticlesCache();
     const todayKey = StorageService._dateKey(new Date());
 
     const cachedForToday = cache.find((a) => a.cachedDateKey === todayKey);
     if (cachedForToday) return cachedForToday;
 
-    const articles = await RssService.fetchLatestArticles(15);
-    // TODO(デバッグ用・一時的): 原因調査後は削除すること
-    articles.forEach((a, i) => {
-      console.log(`[DEBUG] ${i}: title="${a.title}" desc_len=${a.summaryEn.length} segments=${a.segments.length}`);
-    });
-    const usable = articles.find((a) => a.segments.length > 0);
-    if (!usable) throw new Error("記事が取得できませんでした");
-
-    const article = { ...usable, cachedDateKey: todayKey };
-
-    try {
-      const audioUrl = await RssService.fetchArticleAudioUrl(article.link);
-      if (audioUrl) article.audioUrl = audioUrl;
-    } catch (e) {
-      console.error("記事音声URLの取得に失敗:", e);
-    }
-
-    // RSSのdescriptionは短い定型文のみで本文が入っていないことが多いため、
-    // 記事ページ本体から本文を取得できた場合はそちらでsummaryEn/segmentsを再生成する
-    try {
-      const bodyText = await RssService.fetchArticleBodyText(article.link);
-      if (bodyText) {
-        article.summaryEn = bodyText;
-        article.segments = RssService._splitIntoSegments(bodyText);
-      }
-    } catch (e) {
-      console.error("記事本文の取得に失敗:", e);
-    }
+    const fetched = await ContentService.fetchTodayArticle();
+    const article = { ...fetched, cachedDateKey: todayKey };
 
     await StorageService.setArticlesCache([article, ...cache].slice(0, 30));
     return article;
@@ -167,7 +141,7 @@ const App = {
         (a) => `
         <div class="card" style="margin-bottom:12px;">
           <h3>${this._escape(a.title)}</h3>
-          <p class="hint">${a.pubDate ?? ""}</p>
+          <p class="hint">${a.date ?? ""}</p>
         </div>
       `
       )

@@ -44,9 +44,9 @@ const PracticeController = {
     document.getElementById("segment-summary-ja").textContent =
       this.article.summaryJa || "（この記事の日本語要約は準備中です。まずは元の英文の雰囲気を感じ取ってみましょう）";
 
-    // Step3で使う英文をセット（Glue Wordハイライト付き）
+    // Step3で使う英文をセット（Glue Word + キーワード絵文字ハイライト付き）
     document.getElementById("segment-text-en").innerHTML =
-      ScoringService.highlightGlueWords(segment);
+      ScoringService.highlightGlueWords(segment, this.article.keywords);
 
     document.getElementById("listen-count").textContent = "0";
     document.getElementById("btn-to-shadow").disabled = true;
@@ -62,9 +62,15 @@ const PracticeController = {
   },
 
   async playModelAudio() {
-    // MVP: 記事全体の音声を再生（セグメント単位の切り出しは将来対応。VOA音声は記事単位配信のため）
-    const audio = new Audio(this.article.audioUrl);
-    await audio.play().catch((e) => console.warn("音声再生エラー:", e));
+    // audioUrlは廃止（TTS対応は別途）。未設定の場合は再生をスキップし、カウントのみ進める。
+    // 注意: audioUrlが空/undefinedのまま new Audio() に渡すと、
+    // WebView内で再生要求がハングし続けてUIが進行不能になるため、必ずガードすること。
+    if (this.article.audioUrl) {
+      const audio = new Audio(this.article.audioUrl);
+      await audio.play().catch((e) => console.warn("音声再生エラー:", e));
+    } else {
+      console.info("[TODO] TTS未実装のため、お手本音声の再生をスキップします");
+    }
     this.listenCount += 1;
     document.getElementById("listen-count").textContent = String(this.listenCount);
     if (this.listenCount >= 3) {

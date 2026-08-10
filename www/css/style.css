@@ -111,6 +111,19 @@ h2 { font-size: 17px; margin: 0 0 12px; }
   padding: 0 2px;
 }
 
+.segment-en .keyword-wrap {
+  white-space: nowrap;
+}
+
+.segment-en .keyword-term {
+  border-bottom: 2px dotted var(--color-danger);
+}
+
+.segment-en .keyword-emoji {
+  font-size: 0.75em;
+  margin-left: 1px;
+}
+
 .hint { color: var(--color-muted); font-size: 14px; }
 
 .listen-count { margin: 12px 0; font-weight: 600; }
