@@ -158,13 +158,19 @@ h2 { font-size: 17px; margin: 0 0 12px; }
 
 .play-recording-btn {
   flex-shrink: 0;
-  width: 44px;
+  min-width: 44px;
   height: 44px;
+  padding: 0 14px;
   border: none;
-  border-radius: 50%;
+  border-radius: 22px;
   background: var(--color-primary);
   color: white;
-  font-size: 16px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.play-recording-btn:disabled {
+  background: #9e9e9e;
 }
 
 /* カレンダー（マス目） */

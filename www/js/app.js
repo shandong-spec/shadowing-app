@@ -3,6 +3,7 @@
 
 const App = {
   todayArticle: null,
+  _currentPlayback: null, // { audio, btn } 再生中の録音（同時に複数再生させないための管理用）
 
   async init() {
     this._wireNav();
@@ -213,25 +214,59 @@ const App = {
       const rec = recordings[Number(btn.dataset.index)];
       if (!rec) return;
 
-      await this._playRecording(rec);
+      await this._playRecording(rec, btn);
     });
   },
 
-  async _playRecording(rec) {
+  async _playRecording(rec, btn) {
     const { Filesystem } = window.Capacitor?.Plugins ?? {};
     if (!Filesystem) {
       console.info("[mock] Filesystemプラグイン未導入のため、録音の再生をスキップします");
       return;
     }
+
+    // 別の録音が再生中なら止めてから、新しい方を再生する（同時に2つ鳴らないように）
+    this._stopCurrentPlayback();
+
     try {
       const { data } = await Filesystem.readFile({ path: rec.filePath, directory: "DATA" });
       const mime = rec.mimeType || "audio/aac";
       const audio = new Audio(`data:${mime};base64,${data}`);
-      await audio.play().catch((e) => console.warn("録音再生エラー:", e));
+
+      const resetButton = () => {
+        if (this._currentPlayback?.audio === audio) {
+          this._currentPlayback = null;
+        }
+        btn.textContent = "▶";
+        btn.disabled = false;
+      };
+      audio.addEventListener("ended", resetButton);
+      audio.addEventListener("error", resetButton);
+
+      this._currentPlayback = { audio, btn };
+      btn.textContent = "⏸ 再生中...";
+      btn.disabled = true;
+
+      await audio.play().catch((e) => {
+        console.warn("録音再生エラー:", e);
+        resetButton();
+      });
     } catch (e) {
       console.error("録音の読み込みに失敗:", e);
       alert("録音を再生できませんでした。");
+      btn.textContent = "▶";
+      btn.disabled = false;
     }
+  },
+
+  _stopCurrentPlayback() {
+    if (!this._currentPlayback) return;
+    const { audio, btn } = this._currentPlayback;
+    audio.pause();
+    audio.currentTime = 0;
+    btn.textContent = "▶";
+    btn.disabled = false;
+    this._currentPlayback = null;
   },
 
   _escape(str) {
