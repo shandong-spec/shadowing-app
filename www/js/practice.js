@@ -62,15 +62,22 @@ const PracticeController = {
   },
 
   async playModelAudio() {
-    // audioUrlは廃止（TTS対応は別途）。未設定の場合は再生をスキップし、カウントのみ進める。
-    // 注意: audioUrlが空/undefinedのまま new Audio() に渡すと、
-    // WebView内で再生要求がハングし続けてUIが進行不能になるため、必ずガードすること。
-    if (this.article.audioUrl) {
-      const audio = new Audio(this.article.audioUrl);
-      await audio.play().catch((e) => console.warn("音声再生エラー:", e));
+    // お手本音声はTTS（@capacitor-community/text-to-speech）で読み上げる。
+    // VOAのようにゆっくり聞こえるよう、rateを標準(1.0)より落として指定する。
+    const segment = this.article.segments[this.segmentIndex];
+    const plugins = window.Capacitor?.Plugins ?? {};
+
+    if (plugins.TextToSpeech) {
+      await plugins.TextToSpeech.speak({
+        text: segment,
+        lang: "en-US",
+        rate: 0.8,
+      }).catch((e) => console.warn("音声読み上げエラー:", e));
     } else {
-      console.info("[TODO] TTS未実装のため、お手本音声の再生をスキップします");
+      // プラグイン未導入時（Web確認用モック）
+      console.info("[mock] TextToSpeechプラグイン未導入のため、読み上げをスキップします");
     }
+
     this.listenCount += 1;
     document.getElementById("listen-count").textContent = String(this.listenCount);
     if (this.listenCount >= 3) {
