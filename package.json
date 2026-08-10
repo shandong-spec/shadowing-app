@@ -1,0 +1,20 @@
+{
+  "name": "shadowing-app",
+  "version": "0.1.0",
+  "description": "毎日の英語ニュースでシャドーイング練習するAndroidアプリ",
+  "scripts": {
+    "sync": "npx cap sync android",
+    "open:android": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.0",
+    "@capacitor/core": "^8.5.0",
+    "@capacitor/preferences": "^8.0.1",
+    "@capacitor/filesystem": "^8.1.2",
+    "@capacitor-community/speech-recognition": "^7.0.1",
+    "capacitor-voice-recorder": "^7.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.0"
+  }
+}

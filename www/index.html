@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>シャドーイング日課</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- ヘッダー：ストリーク表示 -->
+    <header class="app-header">
+      <div class="streak">🔥 <span id="streak-count">0</span>日連続</div>
+    </header>
+
+    <!-- ホーム画面 -->
+    <section id="view-home" class="view active">
+      <h1>今日のニュース</h1>
+      <div id="today-article" class="card">
+        <p class="loading">ニュースを取得中...</p>
+      </div>
+      <button id="btn-start-practice" class="primary-btn" disabled>シャドーイングを始める</button>
+
+      <h2>直近の記録</h2>
+      <div id="mini-calendar" class="mini-calendar"></div>
+    </section>
+
+    <!-- シャドーイング練習画面（5ステップ） -->
+    <section id="view-practice" class="view">
+      <div class="step-indicator" id="step-indicator">Step 1 / 5</div>
+
+      <!-- Step 1: 意味理解 -->
+      <div id="step-meaning" class="step-panel">
+        <h2>意味を先に理解しよう</h2>
+        <p id="segment-summary-ja" class="summary-ja"></p>
+        <button class="primary-btn next-step">聞く準備ができた</button>
+      </div>
+
+      <!-- Step 2: 多聴 (Brain Soaking) -->
+      <div id="step-listen" class="step-panel hidden">
+        <h2>まずは3回聞き流そう</h2>
+        <p class="hint">意味がわからなくてOK。耳を慣らすだけです。</p>
+        <div class="listen-count">再生回数: <span id="listen-count">0</span> / 3</div>
+        <button id="btn-play-model" class="primary-btn">▶ お手本を再生</button>
+        <button class="primary-btn next-step" id="btn-to-shadow" disabled>シャドーイングへ進む</button>
+      </div>
+
+      <!-- Step 3: シャドーイング録音 -->
+      <div id="step-shadow" class="step-panel hidden">
+        <h2>重ねて発音してみよう</h2>
+        <p id="segment-text-en" class="segment-en"></p>
+        <button id="btn-record" class="primary-btn record-btn">● 録音開始</button>
+        <button class="primary-btn next-step hidden" id="btn-to-feedback">フィードバックへ</button>
+      </div>
+
+      <!-- Step 4: フィードバック（Language Parent方式） -->
+      <div id="step-feedback" class="step-panel hidden">
+        <h2>お疲れさま！</h2>
+        <div id="feedback-message" class="feedback-message"></div>
+        <div id="feedback-score" class="feedback-score"></div>
+        <button class="primary-btn next-step" id="btn-to-output">アウトプットへ</button>
+      </div>
+
+      <!-- Step 5: アウトプット (Mixing) -->
+      <div id="step-output" class="step-panel hidden">
+        <h2>関連する一言を話してみよう</h2>
+        <p class="hint">採点はありません。自由に話して録音するだけでOK。</p>
+        <button id="btn-record-output" class="primary-btn record-btn">● 録音開始</button>
+        <button class="primary-btn" id="btn-finish-segment">このセグメントを完了</button>
+      </div>
+    </section>
+
+    <!-- カレンダー画面 -->
+    <section id="view-calendar" class="view">
+      <h1>継続の記録</h1>
+      <div id="full-calendar" class="full-calendar"></div>
+    </section>
+
+    <!-- 履歴画面 -->
+    <section id="view-history" class="view">
+      <h1>これまでのニュース</h1>
+      <div id="history-list"></div>
+    </section>
+
+    <!-- 設定画面 -->
+    <section id="view-settings" class="view">
+      <h1>設定</h1>
+      <div class="settings-item">
+        <label for="reminder-time">リマインダー時刻</label>
+        <input type="time" id="reminder-time" value="07:30" />
+      </div>
+      <button id="btn-reset-data" class="danger-btn">学習データをリセット</button>
+    </section>
+
+    <!-- ボトムナビ -->
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-view="home">ホーム</button>
+      <button class="nav-btn" data-view="calendar">記録</button>
+      <button class="nav-btn" data-view="history">履歴</button>
+      <button class="nav-btn" data-view="settings">設定</button>
+    </nav>
+  </div>
+
+  <script src="js/rss.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/scoring.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/practice.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
