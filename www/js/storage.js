@@ -4,7 +4,8 @@
 //   articles_cache     -> 取得済み記事リスト(JSON)
 //   daily_records      -> { "2026-08-10": { status: "full", segmentsDone: 3, totalSegments: 3, scores: [82, 90] }, ... }
 //   streak_count       -> 数値
-//   output_recordings  -> { "articleId_segmentIndex": "録音メモ(将来的にファイルパス等)" }
+//   output_recordings  -> [{ date, articleId, segmentIndex, filePath, title, mimeType }, ...]（新しい順）
+//                         音声本体は@capacitor/filesystemでファイル保存し、ここには軽量なメタデータのみ持つ
 
 const StorageService = {
   async get(key) {
@@ -79,6 +80,17 @@ const StorageService = {
     const m = String(date.getMonth() + 1).padStart(2, "0");
     const d = String(date.getDate()).padStart(2, "0");
     return `${y}-${m}-${d}`;
+  },
+
+  async getOutputRecordings() {
+    return (await this.get("output_recordings")) ?? [];
+  },
+
+  async addOutputRecording(date, articleId, segmentIndex, filePath, title, mimeType) {
+    const recordings = await this.getOutputRecordings();
+    recordings.unshift({ date, articleId, segmentIndex, filePath, title, mimeType });
+    await this.set("output_recordings", recordings);
+    return recordings;
   },
 
   async resetAll() {

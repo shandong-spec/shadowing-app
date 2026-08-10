@@ -66,6 +66,7 @@
       <div id="step-output" class="step-panel hidden">
         <h2>関連する一言を話してみよう</h2>
         <p class="hint">採点はありません。自由に話して録音するだけでOK。</p>
+        <p id="output-recording-status" class="hint recording-status hidden">🔴 録音中...</p>
         <button id="btn-record-output" class="primary-btn record-btn">● 録音開始</button>
         <button class="primary-btn" id="btn-finish-segment">このセグメントを完了</button>
       </div>
@@ -81,6 +82,9 @@
     <section id="view-history" class="view">
       <h1>これまでのニュース</h1>
       <div id="history-list"></div>
+
+      <h2>マイ録音</h2>
+      <div id="my-recordings-list"></div>
     </section>
 
     <!-- 設定画面 -->

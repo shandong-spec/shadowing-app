@@ -8,6 +8,7 @@ const App = {
     this._wireNav();
     this._wirePracticeButtons();
     this._wireSettings();
+    this._wireHistory();
     await this.refreshHome();
   },
 
@@ -109,9 +110,9 @@ const App = {
       PracticeController.goToOutput();
     });
 
-    document.getElementById("btn-record-output").addEventListener("click", async (e) => {
-      await PracticeController.recordOutput();
-      e.target.textContent = "✓ 録音済み";
+    document.getElementById("btn-record-output").addEventListener("click", () => {
+      // ボタンテキストや録音中表示はrecordOutput()側でトグル管理する
+      PracticeController.recordOutput();
     });
 
     document.getElementById("btn-finish-segment").addEventListener("click", () => {
@@ -134,18 +135,74 @@ const App = {
     const container = document.getElementById("history-list");
     if (cache.length === 0) {
       container.innerHTML = `<p class="hint">まだ履歴がありません。</p>`;
-      return;
-    }
-    container.innerHTML = cache
-      .map(
-        (a) => `
+    } else {
+      container.innerHTML = cache
+        .map(
+          (a) => `
         <div class="card" style="margin-bottom:12px;">
           <h3>${this._escape(a.title)}</h3>
           <p class="hint">${a.date ?? ""}</p>
         </div>
       `
+        )
+        .join("");
+    }
+
+    await this._renderMyRecordings();
+  },
+
+  async _renderMyRecordings() {
+    const recordings = await StorageService.getOutputRecordings();
+    const container = document.getElementById("my-recordings-list");
+
+    if (recordings.length === 0) {
+      container.innerHTML = `<p class="hint">まだ録音がありません。</p>`;
+      return;
+    }
+
+    container.innerHTML = recordings
+      .map(
+        (r, i) => `
+        <div class="card recording-item">
+          <div>
+            <div>${this._escape(r.title || "")}</div>
+            <p class="hint">${r.date ?? ""}</p>
+          </div>
+          <button class="play-recording-btn" data-index="${i}" aria-label="再生">▶</button>
+        </div>
+      `
       )
       .join("");
+  },
+
+  _wireHistory() {
+    document.getElementById("my-recordings-list").addEventListener("click", async (e) => {
+      const btn = e.target.closest(".play-recording-btn");
+      if (!btn) return;
+
+      const recordings = await StorageService.getOutputRecordings();
+      const rec = recordings[Number(btn.dataset.index)];
+      if (!rec) return;
+
+      await this._playRecording(rec);
+    });
+  },
+
+  async _playRecording(rec) {
+    const { Filesystem } = window.Capacitor?.Plugins ?? {};
+    if (!Filesystem) {
+      console.info("[mock] Filesystemプラグイン未導入のため、録音の再生をスキップします");
+      return;
+    }
+    try {
+      const { data } = await Filesystem.readFile({ path: rec.filePath, directory: "DATA" });
+      const mime = rec.mimeType || "audio/aac";
+      const audio = new Audio(`data:${mime};base64,${data}`);
+      await audio.play().catch((e) => console.warn("録音再生エラー:", e));
+    } catch (e) {
+      console.error("録音の読み込みに失敗:", e);
+      alert("録音を再生できませんでした。");
+    }
   },
 
   _escape(str) {

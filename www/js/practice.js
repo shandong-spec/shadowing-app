@@ -1,11 +1,12 @@
 // practice.js
 // 5ステップ（意味理解→多聴→シャドーイング→フィードバック→アウトプット）の進行を管理
 //
-// 音声認識・録音は実機ネイティブプラグインに依存する部分があるため、
-// ここでは呼び出しインターフェースを整え、プラグイン未導入時はモックで動作確認できるようにしている。
-// 導入予定プラグイン:
-//   - 録音: capacitor-voice-recorder (or 同等)
-//   - 音声認識: @capacitor-community/speech-recognition
+// 音声認識・録音・読み上げは実機ネイティブプラグインに依存するため、
+// プラグイン未導入時（Web確認時）はモックで動作確認できるようにしている。
+// 使用プラグイン:
+//   - お手本読み上げ: @capacitor-community/text-to-speech
+//   - アウトプット録音: capacitor-voice-recorder + @capacitor/filesystem（ファイル保存）
+//   - シャドーイング音声認識: @capacitor-community/speech-recognition（未実装・モックのまま）
 
 const PracticeController = {
   article: null,
@@ -13,6 +14,7 @@ const PracticeController = {
   listenCount: 0,
   lastRecognizedText: "",
   lastScore: 0,
+  isRecordingOutput: false,
 
   async start(article) {
     this.article = article;
@@ -50,6 +52,12 @@ const PracticeController = {
 
     document.getElementById("listen-count").textContent = "0";
     document.getElementById("btn-to-shadow").disabled = true;
+
+    // Step5: 録音ボタン/ステータスを新しいセグメント用にリセット（前セグメントの「✓ 録音済み」が残らないように）
+    this.isRecordingOutput = false;
+    document.getElementById("btn-record-output").textContent = "● 録音開始";
+    document.getElementById("btn-record-output").disabled = false;
+    document.getElementById("output-recording-status").classList.add("hidden");
 
     this._showStep("meaning");
   },
@@ -128,9 +136,83 @@ const PracticeController = {
     this._showStep("output");
   },
 
+  // Step5は採点なし。ボタンはトグル式（● 録音開始 ⇄ ■ 録音停止）。
+  // 停止時に@capacitor/filesystemへファイル保存し、StorageServiceに軽量メタデータを記録する。
   async recordOutput() {
-    // Step5は採点なし。録音して保存するのみ（将来: ファイル保存してヒストリーで再生可能に）
-    console.info("[stub] アウトプット録音を保存（実装はcapacitor-voice-recorder導入後）");
+    const plugins = window.Capacitor?.Plugins ?? {};
+    const btn = document.getElementById("btn-record-output");
+    const status = document.getElementById("output-recording-status");
+
+    if (!plugins.VoiceRecorder) {
+      // プラグイン未導入時（Web確認用モック）
+      console.info("[mock] VoiceRecorderプラグイン未導入のため、録音をスキップします");
+      return;
+    }
+
+    if (!this.isRecordingOutput) {
+      // 録音開始
+      try {
+        const permission = await plugins.VoiceRecorder.requestAudioRecordingPermission();
+        if (!permission?.value) {
+          alert("録音を行うには、マイクの使用を許可してください。");
+          return;
+        }
+        await plugins.VoiceRecorder.startRecording();
+        this.isRecordingOutput = true;
+        btn.textContent = "■ 録音停止";
+        status?.classList.remove("hidden");
+      } catch (e) {
+        console.error("録音開始に失敗:", e);
+        alert("録音を開始できませんでした。");
+      }
+      return;
+    }
+
+    // 録音停止 -> ファイル保存 -> メタデータ記録
+    btn.disabled = true;
+    try {
+      const result = await plugins.VoiceRecorder.stopRecording();
+      const { recordDataBase64, mimeType } = result.value;
+      const filePath = await this._saveOutputRecording(recordDataBase64, mimeType);
+
+      await StorageService.addOutputRecording(
+        StorageService._dateKey(new Date()),
+        this.article.id,
+        this.segmentIndex,
+        filePath,
+        this.article.title,
+        mimeType
+      );
+
+      btn.textContent = "✓ 録音済み";
+    } catch (e) {
+      console.error("録音の保存に失敗:", e);
+      alert("録音の保存に失敗しました。");
+      btn.textContent = "● 録音開始";
+    } finally {
+      this.isRecordingOutput = false;
+      status?.classList.add("hidden");
+      btn.disabled = false;
+    }
+  },
+
+  async _saveOutputRecording(base64Data, mimeType) {
+    const { Filesystem } = window.Capacitor.Plugins;
+    // 実際の拡張子・MIMEタイプはプラットフォーム依存（Android/iOSは audio/aac、Web(Chrome)は audio/webm 等）。
+    // 固定で.wav扱いにすると再生できないため、プラグインが返すmimeTypeをそのまま使う。
+    const ext = (mimeType.split("/")[1] || "m4a").split(";")[0];
+    const dateKey = StorageService._dateKey(new Date());
+    const fileName = `${dateKey}_${this.article.id}_${this.segmentIndex}.${ext}`;
+    const filePath = `recordings/${fileName}`;
+
+    await Filesystem.writeFile({
+      path: filePath,
+      data: base64Data,
+      directory: "DATA",
+      recursive: true,
+    });
+
+    return filePath;
   },
 
   async finishSegment() {
