@@ -7,6 +7,7 @@
 //   output_recordings  -> [{ date, articleId, segmentIndex, filePath, title, mimeType }, ...]（新しい順・Step5）
 //   shadowing_recordings -> [{ date, articleId, segmentIndex, filePath, title, mimeType, segmentText, score }, ...]（新しい順・Step3）
 //                         音声本体は@capacitor/filesystemでファイル保存し、ここには軽量なメタデータのみ持つ
+//   show_segment_text_step5 -> 真偽値（Step5で英文を表示するかどうかの設定。端末に記憶し次回起動時も維持）
 
 const StorageService = {
   async get(key) {
@@ -103,6 +104,14 @@ const StorageService = {
     recordings.unshift({ date, articleId, segmentIndex, filePath, title, mimeType, segmentText, score });
     await this.set("shadowing_recordings", recordings);
     return recordings;
+  },
+
+  async getShowSegmentTextStep5() {
+    return (await this.get("show_segment_text_step5")) ?? false;
+  },
+
+  async setShowSegmentTextStep5(value) {
+    await this.set("show_segment_text_step5", value);
   },
 
   async resetAll() {

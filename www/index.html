@@ -44,6 +44,7 @@
         <div class="listen-count">再生回数: <span id="listen-count">0</span> / 3</div>
         <button id="btn-play-model" class="primary-btn">▶ お手本を再生</button>
         <button class="primary-btn next-step" id="btn-to-shadow" disabled>シャドーイングへ進む</button>
+        <button id="btn-skip-listen" class="link-btn">スキップしてシャドーイングへ</button>
       </div>
 
       <!-- Step 3: シャドーイング録音 -->
@@ -67,6 +68,11 @@
       <div id="step-output" class="step-panel hidden">
         <h2>関連する一言を話してみよう</h2>
         <p class="hint">採点はありません。自由に話して録音するだけでOK。</p>
+        <label class="toggle-row">
+          <input type="checkbox" id="chk-show-segment-text" />
+          セグメントの英文を表示する
+        </label>
+        <p id="output-segment-text-en" class="segment-en hidden"></p>
         <p id="output-recording-status" class="hint recording-status hidden">🔴 録音中...</p>
         <button id="btn-record-output" class="primary-btn record-btn">● 録音開始</button>
         <button class="primary-btn" id="btn-finish-segment">このセグメントを完了</button>

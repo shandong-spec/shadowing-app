@@ -7,6 +7,8 @@
 //   - お手本読み上げ: @capacitor-community/text-to-speech
 //   - アウトプット録音(Step5): capacitor-voice-recorder + @capacitor/filesystem（ファイル保存）
 //   - シャドーイング音声認識(Step3): @capacitor-community/speech-recognition
+//     -> ボタンはトグル式。start()は「終了」タップ or 自然な無音検知まで解決しないPromiseなので、
+//        開始時にawaitせず保持しておき、終了タップ時にstop()を呼んでから改めてawaitする。
 //   - シャドーイング音声録音(Step3): capacitor-voice-recorder（音声認識と並行して開始・終了する）
 
 const PracticeController = {
@@ -16,10 +18,16 @@ const PracticeController = {
   lastRecognizedText: "",
   lastScore: 0,
   isRecordingOutput: false,
+  isRecordingShadowing: false,
+  showSegmentText: false,
+  _shadowingAudioStarted: false,
+  _shadowingRecognitionPromise: null,
 
   async start(article) {
     this.article = article;
     this.segmentIndex = 0;
+    this.showSegmentText = await StorageService.getShowSegmentTextStep5();
+    document.getElementById("chk-show-segment-text").checked = this.showSegmentText;
     this._goToSegment(0);
     App.showView("practice");
   },
@@ -61,8 +69,16 @@ const PracticeController = {
     document.getElementById("output-recording-status").classList.add("hidden");
     document.getElementById("output-recording-status").classList.remove("save-warning");
 
-    // Step3: 前セグメントの保存失敗メッセージが残らないようにリセット
+    // Step3: 録音ボタン/保存失敗メッセージを新しいセグメント用にリセット
+    this.isRecordingShadowing = false;
+    this._shadowingAudioStarted = false;
+    this._shadowingRecognitionPromise = null;
+    document.getElementById("btn-record").textContent = "🎤 話してみる（タップして発音）";
+    document.getElementById("btn-record").disabled = false;
     document.getElementById("shadowing-recording-status").classList.add("hidden");
+
+    // Step5: 英文表示（トグルがONの場合のみ、Glue Word/キーワードハイライト付きで表示）
+    this._renderOutputSegmentText(segment);
 
     this._showStep("meaning");
   },
@@ -98,30 +114,47 @@ const PracticeController = {
     }
   },
 
-  // Step3のボタン文言は「録音」ではないが、SpeechRecognizerによる音声認識と並行して
-  // capacitor-voice-recorderでも録音し、後で聞き返せるように保存する。
-  // 無音/認識失敗時はOS側が数秒でタイムアウトし、エラーとして返ってくる（仕様通り）。
+  // Step3のボタンはStep5と同じトグル式（🎤 話してみる ⇄ ■ 終了）。
+  // SpeechRecognizerの自然な無音検知に任せると発話の途中で切れてしまうため、
+  // ユーザーが「■ 終了」を押した時点でstop()を呼んで確定させる。
+  // capacitor-voice-recorderでも同時に録音し、後で聞き返せるように保存する。
   async recordShadowing() {
-    const segment = this.article.segments[this.segmentIndex];
+    const btn = document.getElementById("btn-record");
     const plugins = window.Capacitor?.Plugins ?? {};
-    const canRecordAudio = !!plugins.VoiceRecorder;
-    let audioRecordingStarted = false;
 
-    if (canRecordAudio) {
-      try {
-        const permission = await plugins.VoiceRecorder.requestAudioRecordingPermission();
-        if (permission?.value) {
-          await plugins.VoiceRecorder.startRecording();
-          audioRecordingStarted = true;
+    if (!this.isRecordingShadowing) {
+      // 開始: 録音と音声認識を同時に始める。認識結果は「終了」が押されるまで待つ。
+      this._shadowingAudioStarted = false;
+      if (plugins.VoiceRecorder) {
+        try {
+          const permission = await plugins.VoiceRecorder.requestAudioRecordingPermission();
+          if (permission?.value) {
+            await plugins.VoiceRecorder.startRecording();
+            this._shadowingAudioStarted = true;
+          }
+        } catch (e) {
+          // 音声認識自体は録音の成否に関わらず続行する
+          console.warn("シャドーイング音声の録音開始に失敗（音声認識は続行します）:", e);
         }
-      } catch (e) {
-        // 音声認識自体は録音の成否に関わらず続行する
-        console.warn("シャドーイング音声の録音開始に失敗（音声認識は続行します）:", e);
       }
+
+      // start()のPromiseは「終了」タップ or 自然な無音検知まで解決しないため、
+      // ここではawaitせず保持しておく（早期rejectでコンソール警告が出ないよう空catchを付けておく）
+      this._shadowingRecognitionPromise = this._startRecognition();
+      this._shadowingRecognitionPromise.catch(() => {});
+
+      this.isRecordingShadowing = true;
+      btn.textContent = "■ 終了";
+      return;
     }
 
+    // 終了: 音声認識・録音の両方を止めて結果を確定させる
+    btn.disabled = true;
+    btn.textContent = "👂 認識中...";
+
+    const segment = this.article.segments[this.segmentIndex];
     try {
-      const recognizedText = await this._recognizeSpeech();
+      const recognizedText = await this._stopRecognitionAndGetResult();
       this.lastRecognizedText = recognizedText;
       this.lastScore = ScoringService.scoreTranscript(segment, recognizedText);
     } catch (e) {
@@ -131,7 +164,7 @@ const PracticeController = {
     }
 
     const statusEl = document.getElementById("shadowing-recording-status");
-    if (audioRecordingStarted) {
+    if (this._shadowingAudioStarted) {
       try {
         const result = await plugins.VoiceRecorder.stopRecording();
         const { recordDataBase64, mimeType, msDuration } = result.value;
@@ -165,6 +198,58 @@ const PracticeController = {
     }
 
     document.getElementById("btn-to-feedback").classList.remove("hidden");
+
+    this.isRecordingShadowing = false;
+    btn.textContent = "🎤 話してみる（タップして発音）";
+    btn.disabled = false;
+  },
+
+  // SpeechRecognition.start()を発火だけさせ、Promiseはユーザーが終了ボタンを押すまで待つ。
+  async _startRecognition() {
+    const plugins = window.Capacitor?.Plugins ?? {};
+    if (plugins.SpeechRecognition) {
+      await plugins.SpeechRecognition.requestPermissions();
+      // このPromiseは stop() が呼ばれる（or 自然に発話が途切れる）まで解決しない
+      return plugins.SpeechRecognition.start({
+        language: "en-US",
+        maxResults: 1,
+        partialResults: false,
+      });
+    }
+    // プラグイン未導入時（Web確認用モック）
+    console.info("[mock] SpeechRecognitionプラグイン未導入のため、ダミーテキストを返します");
+    return { matches: [this.article.segments[this.segmentIndex]] };
+  },
+
+  // stop()はAndroidのSpeechRecognizer.stopListening()相当。
+  // 「その時点までに話した内容」で認識を確定させ、start()側のPromiseが結果を持って解決する。
+  // すでに自然に終了していた場合はネイティブ側で無視される安全な呼び出し。
+  //
+  // 注意: @capacitor-community/speech-recognition@7.0.1のAndroid実装は、stop()の
+  // 成功パスでcall.resolve()を一度も呼んでいない（call.reject()のみ実装）ため、
+  // await stop() は永久にハングする（実機・エミュレータ両方で確認済みのプラグイン側バグ）。
+  // stop()はawaitせず発火のみに留め、結果はstart()側のPromiseから受け取る。
+  async _stopRecognitionAndGetResult() {
+    const plugins = window.Capacitor?.Plugins ?? {};
+    if (plugins.SpeechRecognition) {
+      plugins.SpeechRecognition.stop().catch(() => {});
+    }
+    // プラグインの未知の不具合でstart()側も解決しないケースに備え、UIが永久に固まらないよう保険を掛ける
+    const result = await this._raceWithTimeout(this._shadowingRecognitionPromise, 8000);
+    return result?.matches?.[0] ?? "";
+  },
+
+  _raceWithTimeout(promise, timeoutMs) {
+    return new Promise((resolve) => {
+      let settled = false;
+      const finish = (value) => {
+        if (settled) return;
+        settled = true;
+        resolve(value);
+      };
+      promise.then(finish).catch(() => finish(null));
+      setTimeout(() => finish(null), timeoutMs);
+    });
   },
 
   _showSaveWarning(statusEl) {
@@ -199,23 +284,6 @@ const PracticeController = {
     });
   },
 
-  async _recognizeSpeech() {
-    const plugins = window.Capacitor?.Plugins ?? {};
-    if (plugins.SpeechRecognition) {
-      // @capacitor-community/speech-recognition 導入後の想定コード
-      await plugins.SpeechRecognition.requestPermissions();
-      const result = await plugins.SpeechRecognition.start({
-        language: "en-US",
-        maxResults: 1,
-        partialResults: false,
-      });
-      return result?.matches?.[0] ?? "";
-    }
-    // プラグイン未導入時（Web確認用モック）
-    console.info("[mock] SpeechRecognitionプラグイン未導入のため、ダミーテキストを返します");
-    return this.article.segments[this.segmentIndex];
-  },
-
   showFeedback() {
     document.getElementById("feedback-message").textContent =
       ScoringService.feedbackMessage(this.lastScore);
@@ -226,6 +294,23 @@ const PracticeController = {
 
   goToOutput() {
     this._showStep("output");
+  },
+
+  // Step5の「セグメントの英文を表示する」トグル。設定は端末に記憶し、次回以降も維持する。
+  async toggleSegmentTextVisibility(checked) {
+    this.showSegmentText = checked;
+    await StorageService.setShowSegmentTextStep5(checked);
+    this._renderOutputSegmentText(this.article.segments[this.segmentIndex]);
+  },
+
+  _renderOutputSegmentText(segment) {
+    const el = document.getElementById("output-segment-text-en");
+    if (this.showSegmentText) {
+      el.innerHTML = ScoringService.highlightGlueWords(segment, this.article.keywords);
+      el.classList.remove("hidden");
+    } else {
+      el.classList.add("hidden");
+    }
   },
 
   // Step5は採点なし。ボタンはトグル式（● 録音開始 ⇄ ■ 録音停止）。

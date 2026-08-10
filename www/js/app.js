@@ -95,12 +95,14 @@ const App = {
       PracticeController._showStep("shadow");
     });
 
-    document.getElementById("btn-record").addEventListener("click", async (e) => {
-      e.target.textContent = "👂 聞き取り中...（話しかけてください）";
-      e.target.disabled = true;
-      await PracticeController.recordShadowing();
-      e.target.textContent = "🎤 話してみる（タップして発音）";
-      e.target.disabled = false;
+    document.getElementById("btn-skip-listen").addEventListener("click", () => {
+      // 再生回数に関わらずシャドーイングへ進める（慣れたユーザー向けのスキップ）
+      PracticeController._showStep("shadow");
+    });
+
+    document.getElementById("btn-record").addEventListener("click", () => {
+      // ボタンテキストや状態表示はrecordShadowing()側でトグル管理する
+      PracticeController.recordShadowing();
     });
 
     document.getElementById("btn-to-feedback").addEventListener("click", () => {
@@ -114,6 +116,10 @@ const App = {
     document.getElementById("btn-record-output").addEventListener("click", () => {
       // ボタンテキストや録音中表示はrecordOutput()側でトグル管理する
       PracticeController.recordOutput();
+    });
+
+    document.getElementById("chk-show-segment-text").addEventListener("change", (e) => {
+      PracticeController.toggleSegmentTextVisibility(e.target.checked);
     });
 
     document.getElementById("btn-finish-segment").addEventListener("click", () => {
