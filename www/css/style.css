@@ -205,14 +205,14 @@ h2 { font-size: 17px; margin: 0 0 12px; }
 .mini-calendar, .full-calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 2px;
+  gap: 1px;
   margin-top: 8px;
 }
 
 .day-cell {
   aspect-ratio: 1;
-  max-height: 32px;
-  border-radius: 3px;
+  max-height: 56px;
+  border-radius: 2px;
   background: var(--grid-empty);
 }
 
