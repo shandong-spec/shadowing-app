@@ -9,7 +9,7 @@ const CONTENT_URL = "https://shandong-spec.github.io/shadowing-app/latest.json";
 const ContentService = {
   /**
    * 今日の記事を取得する
-   * @returns {Promise<{id:string, date:string, title:string, summaryJa:string, segments:string[], keywords:Array<{term:string, emoji:string}>}>}
+   * @returns {Promise<{id:string, date:string, title:string, summaryJa:string, format:string, segments:string[], keywords:Array<{term:string, emoji:string}>}>}
    */
   async fetchTodayArticle() {
     const data = await this._fetchJson(CONTENT_URL);
@@ -22,6 +22,8 @@ const ContentService = {
       date: data.date ?? "",
       title: data.title ?? "",
       summaryJa: data.summaryJa ?? "",
+      // "dialogue"の場合、segmentsの各要素は"Speaker: 発言"形式（practice.jsが話者ラベル表示に使う）
+      format: data.format === "dialogue" ? "dialogue" : "prose",
       segments: Array.isArray(data.segments) ? data.segments : [],
       keywords: Array.isArray(data.keywords) ? data.keywords : [],
     };

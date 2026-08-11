@@ -44,4 +44,16 @@ const ScoringService = {
       return `<span class="keyword-wrap">${wordHtml}${emojiHtml}</span>`;
     });
   },
+
+  /**
+   * 会話形式(article.format === "dialogue")のセグメントから話者名を取り出す。
+   * generate-article.jsが"Speaker: 発言"の形式で出力する想定。
+   * @param {string} segment
+   * @returns {{speaker: string|null, text: string}} 話者が見つからない場合はspeaker: null、textはsegmentそのまま
+   */
+  parseSpeakerLine(segment) {
+    const match = segment.match(/^([A-Za-z][A-Za-z ]{0,20}):\s*(.*)$/);
+    if (!match) return { speaker: null, text: segment };
+    return { speaker: match[1].trim(), text: match[2] };
+  },
 };

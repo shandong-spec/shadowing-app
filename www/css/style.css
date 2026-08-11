@@ -152,6 +152,28 @@ h2 { font-size: 17px; margin: 0 0 12px; }
   margin-left: 1px;
 }
 
+.speaker-label {
+  display: inline-block;
+  font-size: 0.6em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.speaker-label.speaker-you {
+  background: var(--color-primary);
+  color: white;
+}
+
+.speaker-label.speaker-other {
+  background: #e0e0e0;
+  color: var(--color-text);
+}
+
 .hint { color: var(--color-muted); font-size: 14px; }
 
 .listen-count { margin: 12px 0; font-weight: 600; }

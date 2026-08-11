@@ -49,9 +49,8 @@ const PracticeController = {
     document.getElementById("segment-summary-ja").textContent =
       this.article.summaryJa || "（この記事の日本語要約は準備中です。まずは元の英文の雰囲気を感じ取ってみましょう）";
 
-    // Step3で使う英文をセット（Glue Word + キーワード絵文字ハイライト付き）
-    document.getElementById("segment-text-en").innerHTML =
-      ScoringService.highlightGlueWords(segment, this.article.keywords);
+    // Step3で使う英文をセット（Glue Word + キーワード絵文字ハイライト付き。会話形式なら話者ラベルも付ける）
+    document.getElementById("segment-text-en").innerHTML = this._renderSegmentHtml(segment);
 
     document.getElementById("listen-count").textContent = "0";
     document.getElementById("btn-to-shadow").disabled = true;
@@ -84,10 +83,27 @@ const PracticeController = {
     });
   },
 
+  // 会話形式(article.format === "dialogue")のセグメントは、"Speaker: 発言"の先頭を
+  // 話者ラベル(バッジ)として切り出し、残りの発言テキストにGlue Word/キーワードハイライトを適用する。
+  // 通常のprose記事はそのままhighlightGlueWordsするだけ。
+  _renderSegmentHtml(segment) {
+    if (this.article.format === "dialogue") {
+      const { speaker, text } = ScoringService.parseSpeakerLine(segment);
+      if (speaker) {
+        const labelClass = speaker.toLowerCase() === "you" ? "speaker-label speaker-you" : "speaker-label speaker-other";
+        return `<span class="${labelClass}">${speaker}</span> ${ScoringService.highlightGlueWords(text, this.article.keywords)}`;
+      }
+    }
+    return ScoringService.highlightGlueWords(segment, this.article.keywords);
+  },
+
   async playModelAudio() {
     // お手本音声はTTS（@capacitor-community/text-to-speech）で読み上げる。
     // VOAのようにゆっくり聞こえるよう、rateを標準(1.0)より落として指定する。
-    const segment = this.article.segments[this.segmentIndex];
+    // 会話形式は「Speaker: 」の部分を読み上げず、発言内容だけを話す（話者は画面上のラベルで示す）。
+    const rawSegment = this.article.segments[this.segmentIndex];
+    const segment =
+      this.article.format === "dialogue" ? ScoringService.parseSpeakerLine(rawSegment).text || rawSegment : rawSegment;
     const plugins = window.Capacitor?.Plugins ?? {};
 
     if (plugins.TextToSpeech) {
@@ -226,7 +242,7 @@ const PracticeController = {
   _renderOutputSegmentText(segment) {
     const el = document.getElementById("output-segment-text-en");
     if (this.showSegmentText) {
-      el.innerHTML = ScoringService.highlightGlueWords(segment, this.article.keywords);
+      el.innerHTML = this._renderSegmentHtml(segment);
       el.classList.remove("hidden");
     } else {
       el.classList.add("hidden");
