@@ -1,5 +1,4 @@
 node_modules/
-android/
 .DS_Store
 .claude/settings.local.json
 .env.local

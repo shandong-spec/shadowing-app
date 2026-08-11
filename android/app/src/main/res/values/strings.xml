@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">シャドーイング日課</string>
+    <string name="title_activity_main">シャドーイング日課</string>
+    <string name="package_name">com.shandong.newsshadowing</string>
+    <string name="custom_url_scheme">com.shandong.newsshadowing</string>
+    <string name="admob_app_id">ca-app-pub-2465265118773151~5057651447</string>
+</resources>
