@@ -196,6 +196,15 @@ h2 { font-size: 17px; margin: 0 0 12px; }
   gap: 12px;
 }
 
+.past-article-item {
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.past-article-item:active {
+  background: var(--grid-empty);
+}
+
 .play-recording-btn {
   flex-shrink: 0;
   min-width: 44px;

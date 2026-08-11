@@ -2,6 +2,8 @@
 // scripts/generate-article.js
 // Claude API でポーカー(テキサスホールデム)をテーマにした英文記事を生成し、
 // docs/articles/YYYY-MM-DD.json と docs/latest.json に保存する。
+// 併せて、直近30日分のメタデータ一覧docs/index.json(過去記事機能用)を更新し、
+// 30日を超えた古いdocs/articles/*.jsonはファイルごと削除する。
 // GitHub Actions (.github/workflows/daily-article.yml) から毎日実行される想定。
 
 const fs = require("fs");
@@ -17,6 +19,8 @@ const Anthropic = require("@anthropic-ai/sdk");
 const MODEL = "claude-haiku-4-5";
 const ARTICLES_DIR = path.join(__dirname, "..", "docs", "articles");
 const LATEST_PATH = path.join(__dirname, "..", "docs", "latest.json");
+const INDEX_PATH = path.join(__dirname, "..", "docs", "index.json");
+const RETENTION_DAYS = 30;
 
 const THEMES = {
   culture: {
@@ -258,6 +262,8 @@ async function main() {
     // segmentsは常にstring[]（会話テーマの場合は各要素が"Speaker: 発言"の形式）。
     // formatはアプリ側(practice.js)が話者ラベルを表示すべきかどうかの判定にのみ使う。
     format: theme.key === "dialogue" ? "dialogue" : "prose",
+    // 過去記事一覧(docs/index.json)にそのまま載せる日本語のテーマ名
+    theme: theme.label,
     segments,
     keywords: generated.keywords,
     source: "AI-generated (Claude)",
@@ -272,6 +278,49 @@ async function main() {
 
   console.log(`[generate-article] saved: ${articlePath}`);
   console.log(`[generate-article] saved: ${LATEST_PATH}`);
+
+  updateIndexAndPrune(jstShifted);
+}
+
+// docs/articles/配下を走査し、直近RETENTION_DAYS日分のメタデータでdocs/index.jsonを更新する。
+// それより古い記事はファイルごと削除し、リポジトリの肥大化を防ぐ（毎日1本ずつ増え続けるため）。
+// カットオフは「今日を含めてRETENTION_DAYS日分」になるようRETENTION_DAYS-1日前を境界にする
+// （そうしないと、削除されるファイルとindex.jsonの件数が1日分ずれてしまう）。
+function updateIndexAndPrune(jstShiftedDate) {
+  const cutoffKey = dateKey(new Date(jstShiftedDate.getTime() - (RETENTION_DAYS - 1) * 24 * 60 * 60 * 1000));
+
+  const dates = fs.existsSync(ARTICLES_DIR)
+    ? fs
+        .readdirSync(ARTICLES_DIR)
+        .filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f))
+        .map((f) => f.replace(/\.json$/, ""))
+    : [];
+
+  const kept = [];
+  for (const d of dates) {
+    if (d < cutoffKey) {
+      fs.unlinkSync(path.join(ARTICLES_DIR, `${d}.json`));
+      console.log(`[generate-article] pruned old article: ${d}.json`);
+    } else {
+      kept.push(d);
+    }
+  }
+
+  const index = kept
+    .sort((a, b) => (a < b ? 1 : a > b ? -1 : 0)) // 新しい順
+    .slice(0, RETENTION_DAYS)
+    .map((d) => {
+      const raw = JSON.parse(fs.readFileSync(path.join(ARTICLES_DIR, `${d}.json`), "utf8"));
+      return {
+        date: raw.date ?? d,
+        title: raw.title ?? "",
+        // この機能より前に生成された記事にはthemeフィールドが無いため、フォールバックする
+        theme: raw.theme ?? "ポーカー記事",
+      };
+    });
+
+  fs.writeFileSync(INDEX_PATH, JSON.stringify(index, null, 2) + "\n", "utf8");
+  console.log(`[generate-article] saved: ${INDEX_PATH} (${index.length} articles)`);
 }
 
 main().catch((err) => {

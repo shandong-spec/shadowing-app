@@ -74,6 +74,19 @@ const App = {
     return article;
   },
 
+  // 過去の記事(index.jsonの一覧からタップされたもの)を取得する。
+  // articles_cacheは既にdate単位で汎用的に使えるため、_loadTodayArticle()と同じキャッシュを共有する
+  // （今日の記事をタップした場合は_loadTodayArticle()側のキャッシュがそのままヒットする）。
+  async _loadArticleByDate(date) {
+    const cache = await StorageService.getArticlesCache();
+    const cached = cache.find((a) => a.date === date);
+    if (cached) return cached;
+
+    const fetched = await ContentService.fetchArticleByDate(date);
+    await StorageService.setArticlesCache([fetched, ...cache].slice(0, 30));
+    return fetched;
+  },
+
   _wirePracticeButtons() {
     document.getElementById("btn-start-practice").addEventListener("click", () => {
       if (this.todayArticle) PracticeController.start(this.todayArticle);
@@ -134,6 +147,8 @@ const App = {
   },
 
   async _renderHistory() {
+    await this._renderPastArticles();
+
     const cache = await StorageService.getArticlesCache();
     const container = document.getElementById("history-list");
     if (cache.length === 0) {
@@ -153,6 +168,31 @@ const App = {
 
     await this._renderOutputRecordings();
     await this._renderShadowingRecordings();
+  },
+
+  // index.json(直近30日分のメタデータ)から、過去記事を選んで練習できる一覧を表示する
+  async _renderPastArticles() {
+    const container = document.getElementById("past-articles-list");
+    try {
+      const index = await ContentService.fetchArticleIndex();
+      if (index.length === 0) {
+        container.innerHTML = `<p class="hint">過去記事はまだありません。</p>`;
+        return;
+      }
+      container.innerHTML = index
+        .map(
+          (a) => `
+        <div class="card past-article-item" data-date="${this._escape(a.date ?? "")}">
+          <h3>${this._escape(a.title ?? "")}</h3>
+          <p class="hint">${this._escape(a.date ?? "")} ・ ${this._escape(a.theme ?? "")}</p>
+        </div>
+      `
+        )
+        .join("");
+    } catch (e) {
+      console.error("過去記事一覧の取得に失敗:", e);
+      container.innerHTML = `<p class="hint">過去記事一覧を取得できませんでした。</p>`;
+    }
   },
 
   async _renderOutputRecordings() {
@@ -206,6 +246,20 @@ const App = {
 
   _wireHistory() {
     document.getElementById("view-history").addEventListener("click", async (e) => {
+      const pastArticleCard = e.target.closest(".past-article-item");
+      if (pastArticleCard) {
+        const date = pastArticleCard.dataset.date;
+        if (!date) return;
+        try {
+          const article = await this._loadArticleByDate(date);
+          PracticeController.start(article);
+        } catch (err) {
+          console.error("過去記事の取得に失敗:", err);
+          alert("この記事を取得できませんでした。");
+        }
+        return;
+      }
+
       const btn = e.target.closest(".play-recording-btn");
       if (!btn) return;
 

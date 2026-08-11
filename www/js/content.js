@@ -5,6 +5,8 @@
 // 実機では @capacitor/core の CapacitorHttp (Native HTTP) を使うのが確実。
 
 const CONTENT_URL = "https://shandong-spec.github.io/shadowing-app/latest.json";
+const INDEX_URL = "https://shandong-spec.github.io/shadowing-app/index.json";
+const ARTICLES_BASE_URL = "https://shandong-spec.github.io/shadowing-app/articles";
 
 const ContentService = {
   /**
@@ -13,6 +15,24 @@ const ContentService = {
    */
   async fetchTodayArticle() {
     const data = await this._fetchJson(CONTENT_URL);
+    return this._normalize(data);
+  },
+
+  /**
+   * 直近30日分の記事一覧(メタデータのみ、新しい順)を取得する
+   * @returns {Promise<Array<{date:string, title:string, theme:string}>>}
+   */
+  async fetchArticleIndex() {
+    const data = await this._fetchJson(INDEX_URL);
+    return Array.isArray(data) ? data : [];
+  },
+
+  /**
+   * 指定した日付の記事を取得する（過去記事を選んで練習する用）
+   * @param {string} date "YYYY-MM-DD"
+   */
+  async fetchArticleByDate(date) {
+    const data = await this._fetchJson(`${ARTICLES_BASE_URL}/${date}.json`);
     return this._normalize(data);
   },
 
