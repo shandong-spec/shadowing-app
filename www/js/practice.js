@@ -350,6 +350,8 @@ const PracticeController = {
     await StorageService.updateTodayRecord({ ...existing, status });
 
     if (isLastSegment) {
+      // その日のシャドーイングセッション完了時のみ、1日1回までインタースティシャル広告を表示する
+      await AdsService.maybeShowDailyInterstitial();
       App.showView("home");
       await App.refreshHome();
     } else {

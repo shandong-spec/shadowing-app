@@ -11,6 +11,9 @@ const App = {
     this._wireSettings();
     this._wireHistory();
     await this.refreshHome();
+
+    await AdsService.init();
+    await AdsService.showHomeBanner();
   },
 
   showView(name) {

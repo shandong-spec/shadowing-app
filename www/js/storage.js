@@ -8,6 +8,7 @@
 //   shadowing_recordings -> [{ date, articleId, segmentIndex, filePath, title, mimeType, segmentText }, ...]（新しい順・Step3シャドーイング）
 //                         音声本体は@capacitor/filesystemでファイル保存し、ここには軽量なメタデータのみ持つ
 //   show_segment_text_step5 -> 真偽値（Step4アウトプットで英文を表示するかどうかの設定。端末に記憶し次回起動時も維持）
+//   last_interstitial_date  -> "YYYY-MM-DD"（インタースティシャル広告を最後に表示した日。1日1回までの制御に使う）
 
 const StorageService = {
   async get(key) {
@@ -112,6 +113,14 @@ const StorageService = {
 
   async setShowSegmentTextStep5(value) {
     await this.set("show_segment_text_step5", value);
+  },
+
+  async getLastInterstitialDate() {
+    return (await this.get("last_interstitial_date")) ?? null;
+  },
+
+  async setLastInterstitialDate(dateKey) {
+    await this.set("last_interstitial_date", dateKey);
   },
 
   async resetAll() {
