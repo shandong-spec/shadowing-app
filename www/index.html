@@ -26,9 +26,9 @@
       <div id="mini-calendar" class="mini-calendar"></div>
     </section>
 
-    <!-- シャドーイング練習画面（5ステップ） -->
+    <!-- シャドーイング練習画面（4ステップ） -->
     <section id="view-practice" class="view">
-      <div class="step-indicator" id="step-indicator">Step 1 / 5</div>
+      <div class="step-indicator" id="step-indicator">Step 1 / 4</div>
 
       <!-- Step 1: 意味理解 -->
       <div id="step-meaning" class="step-panel">
@@ -53,21 +53,13 @@
         <p id="segment-text-en" class="segment-en"></p>
         <p id="shadowing-recording-status" class="hint recording-status hidden"></p>
         <button id="btn-record" class="primary-btn">🎤 話してみる（タップして発音）</button>
-        <button class="primary-btn next-step hidden" id="btn-to-feedback">フィードバックへ</button>
+        <button class="primary-btn next-step hidden" id="btn-to-output">アウトプットへ</button>
       </div>
 
-      <!-- Step 4: フィードバック（Language Parent方式） -->
-      <div id="step-feedback" class="step-panel hidden">
-        <h2>お疲れさま！</h2>
-        <div id="feedback-message" class="feedback-message"></div>
-        <div id="feedback-score" class="feedback-score"></div>
-        <button class="primary-btn next-step" id="btn-to-output">アウトプットへ</button>
-      </div>
-
-      <!-- Step 5: アウトプット (Mixing) -->
+      <!-- Step 4: アウトプット (Mixing) -->
       <div id="step-output" class="step-panel hidden">
         <h2>関連する一言を話してみよう</h2>
-        <p class="hint">採点はありません。自由に話して録音するだけでOK。</p>
+        <p class="hint">正解はありません。自分の言葉で自由に話してみましょう。</p>
         <label class="toggle-row">
           <input type="checkbox" id="chk-show-segment-text" />
           セグメントの英文を表示する
@@ -93,7 +85,7 @@
       <h2>🗣 シャドーイング録音（Step3）</h2>
       <div id="shadowing-recordings-list"></div>
 
-      <h2>🎤 アウトプット録音（Step5）</h2>
+      <h2>🎤 アウトプット録音（Step4）</h2>
       <div id="my-recordings-list"></div>
     </section>
 

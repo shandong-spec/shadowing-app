@@ -105,10 +105,6 @@ const App = {
       PracticeController.recordShadowing();
     });
 
-    document.getElementById("btn-to-feedback").addEventListener("click", () => {
-      PracticeController.showFeedback();
-    });
-
     document.getElementById("btn-to-output").addEventListener("click", () => {
       PracticeController.goToOutput();
     });

@@ -2,12 +2,12 @@
 // Capacitor Preferences をラップしたローカル永続化レイヤー
 // キー設計:
 //   articles_cache     -> 取得済み記事リスト(JSON)
-//   daily_records      -> { "2026-08-10": { status: "full", segmentsDone: 3, totalSegments: 3, scores: [82, 90] }, ... }
+//   daily_records      -> { "2026-08-10": { status: "full", segmentsDone: 3, totalSegments: 3 }, ... }
 //   streak_count       -> 数値
-//   output_recordings  -> [{ date, articleId, segmentIndex, filePath, title, mimeType }, ...]（新しい順・Step5）
-//   shadowing_recordings -> [{ date, articleId, segmentIndex, filePath, title, mimeType, segmentText, score }, ...]（新しい順・Step3）
+//   output_recordings  -> [{ date, articleId, segmentIndex, filePath, title, mimeType }, ...]（新しい順・Step4アウトプット）
+//   shadowing_recordings -> [{ date, articleId, segmentIndex, filePath, title, mimeType, segmentText }, ...]（新しい順・Step3シャドーイング）
 //                         音声本体は@capacitor/filesystemでファイル保存し、ここには軽量なメタデータのみ持つ
-//   show_segment_text_step5 -> 真偽値（Step5で英文を表示するかどうかの設定。端末に記憶し次回起動時も維持）
+//   show_segment_text_step5 -> 真偽値（Step4アウトプットで英文を表示するかどうかの設定。端末に記憶し次回起動時も維持）
 
 const StorageService = {
   async get(key) {
@@ -99,9 +99,9 @@ const StorageService = {
     return (await this.get("shadowing_recordings")) ?? [];
   },
 
-  async addShadowingRecording(date, articleId, segmentIndex, filePath, title, mimeType, segmentText, score) {
+  async addShadowingRecording(date, articleId, segmentIndex, filePath, title, mimeType, segmentText) {
     const recordings = await this.getShadowingRecordings();
-    recordings.unshift({ date, articleId, segmentIndex, filePath, title, mimeType, segmentText, score });
+    recordings.unshift({ date, articleId, segmentIndex, filePath, title, mimeType, segmentText });
     await this.set("shadowing_recordings", recordings);
     return recordings;
   },
