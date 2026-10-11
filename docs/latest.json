@@ -1,28 +1,28 @@
 {
-  "date": "2026-10-10",
-  "title": "Declaring a Call at the Poker Table",
-  "summaryJa": "ポーカープレイヤーが相手のベットに対してコール（同じ金額を賭ける）することを明確に宣言し、ディーラーがそれを確認する場面です。実際のテーブルでアクションを正しく伝える重要な英語表現を学べます。",
+  "date": "2026-10-11",
+  "title": "Requesting a Chip Count During a Tournament Hand",
+  "summaryJa": "トーナメント中のハンド中に、プレイヤーがディーラーに自分のチップ数を数えてもらうよう依頼する場面です。ポーカーテーブルで正確なチップ数を確認することは、ベットの判断やオールインの決定に重要なため、この会話パターンは実践的で役立ちます。",
   "format": "dialogue",
   "theme": "実践フレーズ会話",
   "segments": [
-    "Opponent: I bet 500.",
-    "You: I call.",
-    "Dealer: Call is 500. Thank you.",
-    "Opponent: Okay, let's see the turn.",
-    "You: Sure, I'm ready."
+    "You: Can I get a count, please?",
+    "Dealer: Sure, let me count your chips.",
+    "Dealer: You have twenty-three thousand, two hundred.",
+    "You: Thank you. I'm going all-in.",
+    "Dealer: All-in for twenty-three thousand, two hundred. Thank you."
   ],
   "keywords": [
     {
-      "term": "call",
-      "emoji": "👆"
-    },
-    {
-      "term": "bet",
-      "emoji": "💰"
+      "term": "count",
+      "emoji": "🔢"
     },
     {
       "term": "chips",
       "emoji": "🎰"
+    },
+    {
+      "term": "all-in",
+      "emoji": "💯"
     }
   ],
   "source": "AI-generated (Claude)"
