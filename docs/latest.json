@@ -1,28 +1,42 @@
 {
-  "date": "2026-10-11",
-  "title": "Requesting a Chip Count During a Tournament Hand",
-  "summaryJa": "トーナメント中のハンド中に、プレイヤーがディーラーに自分のチップ数を数えてもらうよう依頼する場面です。ポーカーテーブルで正確なチップ数を確認することは、ベットの判断やオールインの決定に重要なため、この会話パターンは実践的で役立ちます。",
-  "format": "dialogue",
-  "theme": "実践フレーズ会話",
+  "date": "2026-10-12",
+  "title": "How Poker Communities Have Grown Online",
+  "summaryJa": "ポーカーは伝統的に友人との対面ゲームでしたが、インターネットの発展により、オンラインプラットフォームを通じて世界中の人々がポーカーをプレイできるようになりました。このデジタル化により、ポーカーコミュニティは大きく変わりました。",
+  "format": "prose",
+  "theme": "一般的なポーカー文化・トレンド解説",
   "segments": [
-    "You: Can I get a count, please?",
-    "Dealer: Sure, let me count your chips.",
-    "Dealer: You have twenty-three thousand, two hundred.",
-    "You: Thank you. I'm going all-in.",
-    "Dealer: All-in for twenty-three thousand, two hundred. Thank you."
+    "For many years, poker was a game people played in homes with friends. Players sat around a table, talked, and played cards together.",
+    "This was the main way people played poker. But the internet changed everything.",
+    "Now people can play poker online with players from all over the world. They do not need to leave their homes.",
+    "Online poker sites became very popular in the 2000s. More and more people started to play on these websites.",
+    "Players could find games at any time, day or night. They could play with a small amount of money or a large amount.",
+    "Online poker made the game easier for new players to learn and practice. They could play many hands quickly and improve their skills.",
+    "The poker community also changed because of streaming and social media. Today, many players share videos of their games on the internet.",
+    "Fans can watch their favorite players and learn from them. Communities of poker fans form online and talk about strategy and new games.",
+    "People who never meet in person feel like friends because they share the same interest. But home games still exist and are still popular.",
+    "Many people enjoy playing poker with friends and family at home. They like the social part of the game.",
+    "So poker has two worlds now - online and in-person. Both ways of playing help the poker community grow and stay active."
   ],
   "keywords": [
     {
-      "term": "count",
-      "emoji": "🔢"
-    },
-    {
-      "term": "chips",
+      "term": "table",
       "emoji": "🎰"
     },
     {
-      "term": "all-in",
-      "emoji": "💯"
+      "term": "hands",
+      "emoji": "🖐️"
+    },
+    {
+      "term": "strategy",
+      "emoji": "🧠"
+    },
+    {
+      "term": "players",
+      "emoji": "👥"
+    },
+    {
+      "term": "games",
+      "emoji": "🎲"
     }
   ],
   "source": "AI-generated (Claude)"
