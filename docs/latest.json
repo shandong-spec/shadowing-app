@@ -1,42 +1,32 @@
 {
-  "date": "2026-10-12",
-  "title": "How Poker Communities Have Grown Online",
-  "summaryJa": "ポーカーは伝統的に友人との対面ゲームでしたが、インターネットの発展により、オンラインプラットフォームを通じて世界中の人々がポーカーをプレイできるようになりました。このデジタル化により、ポーカーコミュニティは大きく変わりました。",
-  "format": "prose",
-  "theme": "一般的なポーカー文化・トレンド解説",
+  "date": "2026-10-13",
+  "title": "Complimenting a Nice Hand After Showdown",
+  "summaryJa": "ショーダウン後に対戦相手のプレイを褒める社交的な交換です。ポーカープレイヤーが良いハンドを見せた相手に友好的に接する方法を学べます。トーナメント環境での礼儀正しい英会話スキルが身につきます。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
   "segments": [
-    "For many years, poker was a game people played in homes with friends. Players sat around a table, talked, and played cards together.",
-    "This was the main way people played poker. But the internet changed everything.",
-    "Now people can play poker online with players from all over the world. They do not need to leave their homes.",
-    "Online poker sites became very popular in the 2000s. More and more people started to play on these websites.",
-    "Players could find games at any time, day or night. They could play with a small amount of money or a large amount.",
-    "Online poker made the game easier for new players to learn and practice. They could play many hands quickly and improve their skills.",
-    "The poker community also changed because of streaming and social media. Today, many players share videos of their games on the internet.",
-    "Fans can watch their favorite players and learn from them. Communities of poker fans form online and talk about strategy and new games.",
-    "People who never meet in person feel like friends because they share the same interest. But home games still exist and are still popular.",
-    "Many people enjoy playing poker with friends and family at home. They like the social part of the game.",
-    "So poker has two worlds now - online and in-person. Both ways of playing help the poker community grow and stay active."
+    "You: That was a nice hand. Good call on the river.",
+    "Opponent: Thanks, man. I had a feeling you were bluffing.",
+    "You: You read me well. Nice catch with that flush draw.",
+    "Opponent: Yeah, I got lucky. Anyway, good luck with the rest of the tournament.",
+    "You: You too. Let's run good."
   ],
   "keywords": [
     {
-      "term": "table",
-      "emoji": "🎰"
+      "term": "call",
+      "emoji": "✋"
     },
     {
-      "term": "hands",
-      "emoji": "🖐️"
+      "term": "river",
+      "emoji": "🌊"
     },
     {
-      "term": "strategy",
-      "emoji": "🧠"
+      "term": "bluffing",
+      "emoji": "🎭"
     },
     {
-      "term": "players",
-      "emoji": "👥"
-    },
-    {
-      "term": "games",
-      "emoji": "🎲"
+      "term": "flush",
+      "emoji": "♠️"
     }
   ],
   "source": "AI-generated (Claude)"

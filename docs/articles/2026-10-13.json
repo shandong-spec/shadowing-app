@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-13",
+  "title": "Complimenting a Nice Hand After Showdown",
+  "summaryJa": "ショーダウン後に対戦相手のプレイを褒める社交的な交換です。ポーカープレイヤーが良いハンドを見せた相手に友好的に接する方法を学べます。トーナメント環境での礼儀正しい英会話スキルが身につきます。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
+  "segments": [
+    "You: That was a nice hand. Good call on the river.",
+    "Opponent: Thanks, man. I had a feeling you were bluffing.",
+    "You: You read me well. Nice catch with that flush draw.",
+    "Opponent: Yeah, I got lucky. Anyway, good luck with the rest of the tournament.",
+    "You: You too. Let's run good."
+  ],
+  "keywords": [
+    {
+      "term": "call",
+      "emoji": "✋"
+    },
+    {
+      "term": "river",
+      "emoji": "🌊"
+    },
+    {
+      "term": "bluffing",
+      "emoji": "🎭"
+    },
+    {
+      "term": "flush",
+      "emoji": "♠️"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}
