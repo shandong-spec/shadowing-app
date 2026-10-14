@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-15",
+  "title": "Asking the Dealer to Clarify the Minimum Raise",
+  "summaryJa": "ポーカープレイヤーが、現在のミニマムレイズの金額がいくらなのかをディーラーに確認する場面です。トーナメント中に正確なルールを理解することは、判断を間違えないために重要です。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
+  "segments": [
+    "You: Excuse me, dealer. What is the minimum raise here?",
+    "Dealer: The current bet is 200. So the minimum raise is 400 total.",
+    "You: So I need to raise to at least 400?",
+    "Dealer: That's correct. You can go 400, 600, 800, or all-in.",
+    "You: Thanks. I call the 200.",
+    "Dealer: Call is 200. Thank you."
+  ],
+  "keywords": [
+    {
+      "term": "raise",
+      "emoji": "📈"
+    },
+    {
+      "term": "call",
+      "emoji": "☎️"
+    },
+    {
+      "term": "bet",
+      "emoji": "💰"
+    },
+    {
+      "term": "all-in",
+      "emoji": "🔥"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}
