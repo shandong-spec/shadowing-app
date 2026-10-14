@@ -1,32 +1,45 @@
 {
-  "date": "2026-10-13",
-  "title": "Complimenting a Nice Hand After Showdown",
-  "summaryJa": "ショーダウン後に対戦相手のプレイを褒める社交的な交換です。ポーカープレイヤーが良いハンドを見せた相手に友好的に接する方法を学べます。トーナメント環境での礼儀正しい英会話スキルが身につきます。",
-  "format": "dialogue",
-  "theme": "実践フレーズ会話",
+  "date": "2026-10-14",
+  "title": "Learn Two Key Texas Hold'em Terms: Bluff and Fold",
+  "summaryJa": "テキサスホールデムで最も重要な2つの用語「ブラフ」と「フォールド」を紹介します。ブラフは弱いハンドで勝つために賭ける戦略で、フォールドはゲームから降りることです。これらの言葉を理解することは、ポーカープレイヤーにとって基本的です。",
+  "format": "prose",
+  "theme": "ポーカー用語の解説",
   "segments": [
-    "You: That was a nice hand. Good call on the river.",
-    "Opponent: Thanks, man. I had a feeling you were bluffing.",
-    "You: You read me well. Nice catch with that flush draw.",
-    "Opponent: Yeah, I got lucky. Anyway, good luck with the rest of the tournament.",
-    "You: You too. Let's run good."
+    "Texas Hold'em has many special words. Two important words are \"bluff\" and \"fold\".",
+    "Learning these words helps you understand poker better. Many new players need to learn what they mean.",
+    "A \"bluff\" is when you bet money and act strong, but your cards are not good. You want other players to think you have a winning hand.",
+    "For example, you have very bad cards. You bet a lot of money anyway.",
+    "Other players see your big bet. They think you have strong cards.",
+    "So they stop playing. You win the money without showing your cards.",
+    "This is a bluff. A \"fold\" means you stop playing the hand.",
+    "You give up your cards. You do not put more money in the pot.",
+    "Folding is a smart choice when your cards are weak. For example, you have two low cards.",
+    "The player next to you bets a lot of money. You think you cannot win.",
+    "So you fold. You stop playing that hand.",
+    "Now you save your money. Bluffing and folding are very different.",
+    "When you bluff, you stay in the game and bet. When you fold, you leave the game.",
+    "Good poker players know when to bluff and when to fold. They use both skills to win money."
   ],
   "keywords": [
     {
-      "term": "call",
-      "emoji": "✋"
-    },
-    {
-      "term": "river",
-      "emoji": "🌊"
-    },
-    {
-      "term": "bluffing",
+      "term": "bluff",
       "emoji": "🎭"
     },
     {
-      "term": "flush",
-      "emoji": "♠️"
+      "term": "fold",
+      "emoji": "🚫"
+    },
+    {
+      "term": "bet",
+      "emoji": "💰"
+    },
+    {
+      "term": "pot",
+      "emoji": "🍲"
+    },
+    {
+      "term": "hand",
+      "emoji": "🃏"
     }
   ],
   "source": "AI-generated (Claude)"
