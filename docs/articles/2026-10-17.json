@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-17",
+  "title": "Clearly Declaring a Raise at the Table",
+  "summaryJa": "ポーカープレイヤーが自分の賭け金を明確に宣言する場面です。アクションを曖昧にせず、はっきりと「レイズ」と言うことで、ディーラーと他のプレイヤーに自分の意思を正確に伝える方法を学べます。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
+  "segments": [
+    "You: I raise to 5,000.",
+    "Dealer: 5,000 is the bet. Action is on you, sir.",
+    "Opponent: That's a tough spot. I call the 5,000.",
+    "Dealer: Call is good. Anyone else?",
+    "You: Good. Let's see the next card."
+  ],
+  "keywords": [
+    {
+      "term": "raise",
+      "emoji": "📈"
+    },
+    {
+      "term": "call",
+      "emoji": "✋"
+    },
+    {
+      "term": "bet",
+      "emoji": "💰"
+    },
+    {
+      "term": "action",
+      "emoji": "🎯"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}
