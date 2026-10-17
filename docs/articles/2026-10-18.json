@@ -1,0 +1,30 @@
+{
+  "date": "2026-10-18",
+  "title": "Asking for a Chip Count During a Hand",
+  "summaryJa": "トーナメント中のハンドで、プレイヤーが自分のチップ枚数を確認するために、ディーラーにチップカウントをお願いする場面です。ポーカーテーブルでの正式な要求の仕方と、ディーラーの応答パターンを学べます。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
+  "segments": [
+    "You: Dealer, can I get a count on my chips, please?",
+    "Dealer: Sure, let me count them for you.",
+    "Dealer: You have four thousand eight hundred chips.",
+    "You: Thank you. And what about that stack over there—is that mine too?",
+    "Dealer: No, that's your opponent's stack. Your chips are just the ones I counted.",
+    "You: Got it, thanks."
+  ],
+  "keywords": [
+    {
+      "term": "count",
+      "emoji": "🔢"
+    },
+    {
+      "term": "chips",
+      "emoji": "💰"
+    },
+    {
+      "term": "stack",
+      "emoji": "📚"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}

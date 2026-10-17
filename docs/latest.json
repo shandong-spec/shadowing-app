@@ -1,32 +1,29 @@
 {
-  "date": "2026-10-17",
-  "title": "Clearly Declaring a Raise at the Table",
-  "summaryJa": "ポーカープレイヤーが自分の賭け金を明確に宣言する場面です。アクションを曖昧にせず、はっきりと「レイズ」と言うことで、ディーラーと他のプレイヤーに自分の意思を正確に伝える方法を学べます。",
+  "date": "2026-10-18",
+  "title": "Asking for a Chip Count During a Hand",
+  "summaryJa": "トーナメント中のハンドで、プレイヤーが自分のチップ枚数を確認するために、ディーラーにチップカウントをお願いする場面です。ポーカーテーブルでの正式な要求の仕方と、ディーラーの応答パターンを学べます。",
   "format": "dialogue",
   "theme": "実践フレーズ会話",
   "segments": [
-    "You: I raise to 5,000.",
-    "Dealer: 5,000 is the bet. Action is on you, sir.",
-    "Opponent: That's a tough spot. I call the 5,000.",
-    "Dealer: Call is good. Anyone else?",
-    "You: Good. Let's see the next card."
+    "You: Dealer, can I get a count on my chips, please?",
+    "Dealer: Sure, let me count them for you.",
+    "Dealer: You have four thousand eight hundred chips.",
+    "You: Thank you. And what about that stack over there—is that mine too?",
+    "Dealer: No, that's your opponent's stack. Your chips are just the ones I counted.",
+    "You: Got it, thanks."
   ],
   "keywords": [
     {
-      "term": "raise",
-      "emoji": "📈"
+      "term": "count",
+      "emoji": "🔢"
     },
     {
-      "term": "call",
-      "emoji": "✋"
-    },
-    {
-      "term": "bet",
+      "term": "chips",
       "emoji": "💰"
     },
     {
-      "term": "action",
-      "emoji": "🎯"
+      "term": "stack",
+      "emoji": "📚"
     }
   ],
   "source": "AI-generated (Claude)"
