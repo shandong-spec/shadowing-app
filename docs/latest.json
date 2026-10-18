@@ -1,29 +1,45 @@
 {
-  "date": "2026-10-18",
-  "title": "Asking for a Chip Count During a Hand",
-  "summaryJa": "トーナメント中のハンドで、プレイヤーが自分のチップ枚数を確認するために、ディーラーにチップカウントをお願いする場面です。ポーカーテーブルでの正式な要求の仕方と、ディーラーの応答パターンを学べます。",
-  "format": "dialogue",
-  "theme": "実践フレーズ会話",
+  "date": "2026-10-19",
+  "title": "Poker Becomes Popular All Over the World",
+  "summaryJa": "ポーカーは昔から存在していましたが、近年インターネットやテレビの普及によって、世界中の人々がプレーするようになりました。特に若い世代や女性プレイヤーも増えており、ポーカーは単なるギャンブルではなく、スキルが必要な競技として認識されるようになっています。",
+  "format": "prose",
+  "theme": "一般的なポーカー文化・トレンド解説",
   "segments": [
-    "You: Dealer, can I get a count on my chips, please?",
-    "Dealer: Sure, let me count them for you.",
-    "Dealer: You have four thousand eight hundred chips.",
-    "You: Thank you. And what about that stack over there—is that mine too?",
-    "Dealer: No, that's your opponent's stack. Your chips are just the ones I counted.",
-    "You: Got it, thanks."
+    "Poker has been played for many years. But in recent times, poker has grown much more popular.",
+    "More people play it today than ever before. This change happened because of the internet and television.",
+    "Today, people can watch poker games on TV and play online. They can learn the game easily and join other players around the world.",
+    "Television made poker very popular. Special poker shows let people watch expert players compete.",
+    "These shows taught people how to play. They saw people win big money.",
+    "Many people wanted to try the game themselves. Young people and women started to play more poker.",
+    "They learned that poker is a skill game, not just luck. Online poker also helped the game grow.",
+    "People can now play poker at home on their computers. They can play for money or just for fun.",
+    "Online games let people play against players from many countries. This made poker easier to learn and play.",
+    "More people joined poker communities online. They share tips and talk about strategy.",
+    "Today, poker communities are different from the past. Home poker games still happen, but they are smaller.",
+    "Many players prefer online games instead. Casinos are still popular, but younger players often start online first.",
+    "Poker has changed from a secret game to a public game. It is now seen as a sport that needs skill and thinking.",
+    "People of all types enjoy poker all around the world."
   ],
   "keywords": [
     {
-      "term": "count",
-      "emoji": "🔢"
+      "term": "poker",
+      "emoji": "🃏"
     },
     {
-      "term": "chips",
+      "term": "players",
+      "emoji": "👥"
+    },
+    {
+      "term": "strategy",
+      "emoji": "🧠"
+    },
+    {
+      "term": "bet",
       "emoji": "💰"
     },
     {
-      "term": "stack",
-      "emoji": "📚"
+      "term": "hand",
+      "emoji": "✋"
     }
   ],
   "source": "AI-generated (Claude)"
