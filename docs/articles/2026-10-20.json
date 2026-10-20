@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-20",
+  "title": "Complimenting a Nice Hand After Showdown",
+  "summaryJa": "ショーダウン後、対戦相手の良いプレイを褒めるという、ポーカーテーブルでよく見られる友好的な交流です。このような自然な英語での会話は、ゲーム中に他のプレイヤーとの関係を築き、テーブルの雰囲気を良好に保つのに役立ちます。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
+  "segments": [
+    "You: Nice hand, by the way. That was a tough spot.",
+    "Opponent: Thanks, I got lucky with the turn card.",
+    "You: Yeah, but your call was good. Not many people would take that line.",
+    "Opponent: I appreciate that. You played it well too—I almost folded.",
+    "You: No way! You had to see the river. Good luck the rest of the tournament."
+  ],
+  "keywords": [
+    {
+      "term": "fold",
+      "emoji": "🚫"
+    },
+    {
+      "term": "call",
+      "emoji": "☎️"
+    },
+    {
+      "term": "hand",
+      "emoji": "🤚"
+    },
+    {
+      "term": "turn",
+      "emoji": "🔄"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}
