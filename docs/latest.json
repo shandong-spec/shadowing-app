@@ -1,32 +1,45 @@
 {
-  "date": "2026-10-20",
-  "title": "Complimenting a Nice Hand After Showdown",
-  "summaryJa": "ショーダウン後、対戦相手の良いプレイを褒めるという、ポーカーテーブルでよく見られる友好的な交流です。このような自然な英語での会話は、ゲーム中に他のプレイヤーとの関係を築き、テーブルの雰囲気を良好に保つのに役立ちます。",
-  "format": "dialogue",
-  "theme": "実践フレーズ会話",
+  "date": "2026-10-21",
+  "title": "Understanding Bluff and Fold in Texas Hold'em Poker",
+  "summaryJa": "ポーカーの「ブラフ」と「フォールド」は基本的な戦術用語です。ブラフは弱いカードを持ちながら強いふりをする行為で、フォールドは自分の手を降りることです。この二つを理解することはテキサスホールデムで成功するために重要です。",
+  "format": "prose",
+  "theme": "ポーカー用語の解説",
   "segments": [
-    "You: Nice hand, by the way. That was a tough spot.",
-    "Opponent: Thanks, I got lucky with the turn card.",
-    "You: Yeah, but your call was good. Not many people would take that line.",
-    "Opponent: I appreciate that. You played it well too—I almost folded.",
-    "You: No way! You had to see the river. Good luck the rest of the tournament."
+    "In Texas Hold'em poker, a bluff is when a player bets or raises with a weak hand. The player hopes other players will believe he has a strong hand and will fold.",
+    "A bluff is a trick. It is not dishonest—it is a normal part of the game.",
+    "Let me give you an example of a bluff. You have two cards that are not very good.",
+    "The flop comes. The board shows three cards that do not help you.",
+    "You are in late position. You decide to make a big bet.",
+    "You want other players to think you have a strong hand. If they believe you, they will fold their cards.",
+    "Then you win the pot without showing your cards. This is a successful bluff.",
+    "Fold is another important term. When you fold, you give up your hand and leave the game.",
+    "You put your cards down and do not play anymore in that round. Players fold when they think their hand is not good enough to win.",
+    "Folding stops you from losing more money. Here is an example of folding.",
+    "You have a weak hand. Your opponent makes a big bet.",
+    "You think he has a strong hand. You do not want to lose more money, so you fold.",
+    "Your opponent wins the pot. You saved your money by folding early.",
+    "Understanding when to bluff and when to fold helps you play better poker."
   ],
   "keywords": [
+    {
+      "term": "bluff",
+      "emoji": "🎭"
+    },
     {
       "term": "fold",
       "emoji": "🚫"
     },
     {
-      "term": "call",
-      "emoji": "☎️"
+      "term": "flop",
+      "emoji": "🃏"
     },
     {
-      "term": "hand",
-      "emoji": "🤚"
+      "term": "pot",
+      "emoji": "💰"
     },
     {
-      "term": "turn",
-      "emoji": "🔄"
+      "term": "position",
+      "emoji": "🪑"
     }
   ],
   "source": "AI-generated (Claude)"
