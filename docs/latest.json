@@ -1,45 +1,37 @@
 {
-  "date": "2026-10-21",
-  "title": "Understanding Bluff and Fold in Texas Hold'em Poker",
-  "summaryJa": "ポーカーの「ブラフ」と「フォールド」は基本的な戦術用語です。ブラフは弱いカードを持ちながら強いふりをする行為で、フォールドは自分の手を降りることです。この二つを理解することはテキサスホールデムで成功するために重要です。",
-  "format": "prose",
-  "theme": "ポーカー用語の解説",
+  "date": "2026-10-22",
+  "title": "Asking the Dealer About the Minimum Raise",
+  "summaryJa": "プレイヤーがポーカーのハンド中に、ディーラーに対して最小レイズ額について質問する場面です。ポーカートーナメントでは複雑なレイズルールがあるため、英語で正確にルールを確認できることは実際のプレイで非常に重要です。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
   "segments": [
-    "In Texas Hold'em poker, a bluff is when a player bets or raises with a weak hand. The player hopes other players will believe he has a strong hand and will fold.",
-    "A bluff is a trick. It is not dishonest—it is a normal part of the game.",
-    "Let me give you an example of a bluff. You have two cards that are not very good.",
-    "The flop comes. The board shows three cards that do not help you.",
-    "You are in late position. You decide to make a big bet.",
-    "You want other players to think you have a strong hand. If they believe you, they will fold their cards.",
-    "Then you win the pot without showing your cards. This is a successful bluff.",
-    "Fold is another important term. When you fold, you give up your hand and leave the game.",
-    "You put your cards down and do not play anymore in that round. Players fold when they think their hand is not good enough to win.",
-    "Folding stops you from losing more money. Here is an example of folding.",
-    "You have a weak hand. Your opponent makes a big bet.",
-    "You think he has a strong hand. You do not want to lose more money, so you fold.",
-    "Your opponent wins the pot. You saved your money by folding early.",
-    "Understanding when to bluff and when to fold helps you play better poker."
+    "You: Dealer, how much is the minimum raise here?",
+    "Dealer: The big blind is 50, so the minimum raise is 50 more.",
+    "You: So I have to bet 100 total?",
+    "Dealer: That's correct. You can raise to 100, or you can go all-in for more.",
+    "You: Got it, thank you.",
+    "Dealer: No problem. You have five seconds to act."
   ],
   "keywords": [
     {
-      "term": "bluff",
-      "emoji": "🎭"
+      "term": "raise",
+      "emoji": "📈"
     },
     {
-      "term": "fold",
-      "emoji": "🚫"
+      "term": "big blind",
+      "emoji": "🔵"
     },
     {
-      "term": "flop",
-      "emoji": "🃏"
+      "term": "all-in",
+      "emoji": "💯"
     },
     {
-      "term": "pot",
+      "term": "bet",
       "emoji": "💰"
     },
     {
-      "term": "position",
-      "emoji": "🪑"
+      "term": "act",
+      "emoji": "⏱️"
     }
   ],
   "source": "AI-generated (Claude)"

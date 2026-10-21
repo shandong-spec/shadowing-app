@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-22",
+  "title": "Asking the Dealer About the Minimum Raise",
+  "summaryJa": "プレイヤーがポーカーのハンド中に、ディーラーに対して最小レイズ額について質問する場面です。ポーカートーナメントでは複雑なレイズルールがあるため、英語で正確にルールを確認できることは実際のプレイで非常に重要です。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
+  "segments": [
+    "You: Dealer, how much is the minimum raise here?",
+    "Dealer: The big blind is 50, so the minimum raise is 50 more.",
+    "You: So I have to bet 100 total?",
+    "Dealer: That's correct. You can raise to 100, or you can go all-in for more.",
+    "You: Got it, thank you.",
+    "Dealer: No problem. You have five seconds to act."
+  ],
+  "keywords": [
+    {
+      "term": "raise",
+      "emoji": "📈"
+    },
+    {
+      "term": "big blind",
+      "emoji": "🔵"
+    },
+    {
+      "term": "all-in",
+      "emoji": "💯"
+    },
+    {
+      "term": "bet",
+      "emoji": "💰"
+    },
+    {
+      "term": "act",
+      "emoji": "⏱️"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}
