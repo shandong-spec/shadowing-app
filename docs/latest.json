@@ -1,37 +1,40 @@
 {
-  "date": "2026-10-22",
-  "title": "Asking the Dealer About the Minimum Raise",
-  "summaryJa": "プレイヤーがポーカーのハンド中に、ディーラーに対して最小レイズ額について質問する場面です。ポーカートーナメントでは複雑なレイズルールがあるため、英語で正確にルールを確認できることは実際のプレイで非常に重要です。",
-  "format": "dialogue",
-  "theme": "実践フレーズ会話",
+  "date": "2026-10-23",
+  "title": "Daniel Negreanu: A Texas Hold'em Champion",
+  "summaryJa": "ダニエル・ネグレアヌはカナダ出身の有名なプロポーカープレイヤーで、テキサスホールデムで複数の大きなタイトルを獲得しました。彼は長年にわたってポーカー界で最も尊敬される選手の一人です。",
+  "format": "prose",
+  "theme": "実在の有名プレイヤーや大会の紹介",
   "segments": [
-    "You: Dealer, how much is the minimum raise here?",
-    "Dealer: The big blind is 50, so the minimum raise is 50 more.",
-    "You: So I have to bet 100 total?",
-    "Dealer: That's correct. You can raise to 100, or you can go all-in for more.",
-    "You: Got it, thank you.",
-    "Dealer: No problem. You have five seconds to act."
+    "Daniel Negreanu is a professional poker player from Canada. He is one of the most famous people in Texas Hold'em.",
+    "Many people know his name and respect his skills. Negreanu has played in big poker games for many years.",
+    "Negreanu has won major poker tournaments. He has won World Series of Poker bracelets.",
+    "These bracelets are very important prizes in poker. Winning a bracelet shows that a player is very good at the game.",
+    "Negreanu's wins helped make him famous around the world. Negreanu is known for his good strategy at the table.",
+    "He knows when to fold his cards and when to play. He understands how other players think.",
+    "This knowledge helps him win pots of money. Young poker players often study his style and decisions.",
+    "Today, Negreanu is still active in poker. He plays in tournaments and cash games.",
+    "He also teaches other people about poker through videos and books. Many people want to learn from him because he is a true champion of the game."
   ],
   "keywords": [
     {
-      "term": "raise",
-      "emoji": "📈"
+      "term": "bracelets",
+      "emoji": "🏆"
     },
     {
-      "term": "big blind",
-      "emoji": "🔵"
+      "term": "fold",
+      "emoji": "🚫"
     },
     {
-      "term": "all-in",
-      "emoji": "💯"
-    },
-    {
-      "term": "bet",
+      "term": "pots",
       "emoji": "💰"
     },
     {
-      "term": "act",
-      "emoji": "⏱️"
+      "term": "tournament",
+      "emoji": "🎯"
+    },
+    {
+      "term": "strategy",
+      "emoji": "🧠"
     }
   ],
   "source": "AI-generated (Claude)"
