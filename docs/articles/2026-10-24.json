@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-24",
+  "title": "Declaring a Raise at the Table",
+  "summaryJa": "ポーカープレイヤーが自分のアクション（レイズ）をはっきりと宣言し、ディーラーがそれを確認する場面です。ポーカーテーブルで自分の意思を正確に伝え、アクションの確認を取ることは非常に重要なスキルです。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
+  "segments": [
+    "You: I raise to 12,000.",
+    "Dealer: 12,000. Thank you. Sir, the action is on you.",
+    "Opponent: Call.",
+    "Dealer: Call 12,000. Anyone else?",
+    "You: Good.",
+    "Dealer: All right, we're going to the flop."
+  ],
+  "keywords": [
+    {
+      "term": "raise",
+      "emoji": "📈"
+    },
+    {
+      "term": "call",
+      "emoji": "✋"
+    },
+    {
+      "term": "chips",
+      "emoji": "🎰"
+    },
+    {
+      "term": "flop",
+      "emoji": "🃏"
+    },
+    {
+      "term": "action",
+      "emoji": "🎯"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}
