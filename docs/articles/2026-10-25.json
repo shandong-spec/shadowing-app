@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-25",
+  "title": "Requesting a Chip Count During a Hand",
+  "summaryJa": "トーナメント中にプレイヤーがディーラーにチップ数を確認してもらう場面です。自分のスタックがいくらあるのか正確に把握することは、ベット決定に重要な情報であり、ポーカープレイヤーとしてディーラーに丁寧に依頼する英語表現を学べます。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
+  "segments": [
+    "You: Dealer, can you count my chips for me, please?",
+    "Dealer: Sure, let me count. You have 12,500 in chips.",
+    "You: Thank you. So I'm good for another raise?",
+    "Dealer: Yes, you can raise. How much do you want to bet?",
+    "You: I'll raise to 3,000.",
+    "Dealer: 3,000. The action is on your opponent."
+  ],
+  "keywords": [
+    {
+      "term": "count",
+      "emoji": "🔢"
+    },
+    {
+      "term": "chips",
+      "emoji": "🎯"
+    },
+    {
+      "term": "raise",
+      "emoji": "📈"
+    },
+    {
+      "term": "bet",
+      "emoji": "💰"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}
