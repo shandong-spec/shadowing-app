@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-27",
+  "title": "Complimenting an Opponent After a Good Hand",
+  "summaryJa": "ポーカーテーブルで、あなたが相手の上手なプレーを見た後、ハンド終了後に友好的に褒める場面です。テーブルでの良好な人間関係を築き、自然な英会話を練習するのに役立ちます。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
+  "segments": [
+    "You: That was a nice bluff on the river. Well played.",
+    "Opponent: Thanks! I thought you might fold there.",
+    "You: Yeah, I almost did. Good read.",
+    "Opponent: How long have you been playing tournaments?",
+    "You: About three years now. It's my first time at this level.",
+    "Opponent: Nice. You're playing solid poker. Good luck the rest of the day."
+  ],
+  "keywords": [
+    {
+      "term": "bluff",
+      "emoji": "🎭"
+    },
+    {
+      "term": "fold",
+      "emoji": "📉"
+    },
+    {
+      "term": "river",
+      "emoji": "🌊"
+    },
+    {
+      "term": "tournaments",
+      "emoji": "🏆"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}

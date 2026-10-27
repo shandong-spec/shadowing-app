@@ -1,44 +1,32 @@
 {
-  "date": "2026-10-26",
-  "title": "How Poker Became Popular Around the World",
-  "summaryJa": "テキサスホールデムポーカーは、かつてはカジノやギャンブルの場だけでしたが、今ではテレビ番組やオンラインゲーム、友人とのカジュアルな遊びを通じて、世界中の多くの人々に愛されるようになりました。",
-  "format": "prose",
-  "theme": "一般的なポーカー文化・トレンド解説",
+  "date": "2026-10-27",
+  "title": "Complimenting an Opponent After a Good Hand",
+  "summaryJa": "ポーカーテーブルで、あなたが相手の上手なプレーを見た後、ハンド終了後に友好的に褒める場面です。テーブルでの良好な人間関係を築き、自然な英会話を練習するのに役立ちます。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
   "segments": [
-    "Poker is a card game that many people enjoy today. It has a long history in America.",
-    "For many years, people played poker in casinos and private games. But in recent times, poker has become much more popular.",
-    "Now people around the world play poker. They play in casinos, online, and at home with friends.",
-    "Television has helped make poker very popular. Many TV shows show poker games.",
-    "These shows teach people how to play. People watch and learn about strategy and different hands.",
-    "Famous poker games on television show exciting moments. Millions of people watch these shows.",
-    "This makes more people want to learn and play poker. Online poker has changed the game very much.",
-    "People can now play poker on the internet. They do not need to go to a casino.",
-    "Players can play from their home any time. They can play with people from other countries.",
-    "Online poker is fast and easy. Many young people started to play poker because of the internet.",
-    "Poker is now a real sport for many people. Some people study poker every day.",
-    "They learn about betting, strategy, and reading other players. Schools and clubs teach poker to new players.",
-    "People travel to tournaments to play poker with other good players. Poker has changed from just a gambling game to a skill game.",
-    "Today, many people see poker as a fun game that needs skill and thinking."
+    "You: That was a nice bluff on the river. Well played.",
+    "Opponent: Thanks! I thought you might fold there.",
+    "You: Yeah, I almost did. Good read.",
+    "Opponent: How long have you been playing tournaments?",
+    "You: About three years now. It's my first time at this level.",
+    "Opponent: Nice. You're playing solid poker. Good luck the rest of the day."
   ],
   "keywords": [
     {
-      "term": "strategy",
-      "emoji": "🧠"
+      "term": "bluff",
+      "emoji": "🎭"
     },
     {
-      "term": "hands",
-      "emoji": "🃏"
+      "term": "fold",
+      "emoji": "📉"
     },
     {
-      "term": "betting",
-      "emoji": "💰"
+      "term": "river",
+      "emoji": "🌊"
     },
     {
-      "term": "players",
-      "emoji": "👥"
-    },
-    {
-      "term": "tournament",
+      "term": "tournaments",
       "emoji": "🏆"
     }
   ],
