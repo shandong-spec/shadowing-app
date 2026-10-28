@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-28",
+  "title": "Understanding 'Fold' and 'Call' in Texas Hold'em",
+  "summaryJa": "テキサスホールデムで、フォールド（降りる）とコール（賭け金に合わせる）は基本的なアクションです。これらの用語を理解することで、ゲームの流れがより分かりやすくなります。",
+  "format": "prose",
+  "theme": "ポーカー用語の解説",
+  "segments": [
+    "Texas Hold'em poker has many important terms. Today we learn about two basic actions: fold and call.",
+    "These words describe what a player does during the game. Understanding these terms helps you follow poker games and play better.",
+    "Fold means you quit the current hand. You give up your cards and stop playing that round.",
+    "You do this when you think you cannot win. When you fold, you lose any money you put in the pot.",
+    "But you also stop losing more money. For example: You have weak cards.",
+    "The player before you bets a lot of money. You decide to fold.",
+    "You do not show your cards. The pot goes to that player.",
+    "Call means you match the money that another player bet. You put the same amount of money in the pot.",
+    "You do not raise the bet higher. You just match it.",
+    "For example: The player next to you bets five dollars. You have okay cards.",
+    "You want to stay in the hand. You call.",
+    "You put five dollars in the pot. Now you stay in the game.",
+    "Both fold and call happen many times in every poker game. Good players know when to fold.",
+    "They do not waste money on bad hands. Good players also know when to call.",
+    "They call with cards that might win. Learning these two actions is the first step to playing Texas Hold'em well."
+  ],
+  "keywords": [
+    {
+      "term": "fold",
+      "emoji": "🚫"
+    },
+    {
+      "term": "call",
+      "emoji": "✋"
+    },
+    {
+      "term": "pot",
+      "emoji": "🪲"
+    },
+    {
+      "term": "bet",
+      "emoji": "💰"
+    },
+    {
+      "term": "hand",
+      "emoji": "🎰"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}
