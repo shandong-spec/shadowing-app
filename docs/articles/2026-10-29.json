@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-29",
+  "title": "Asking the Dealer to Clarify the Minimum Raise",
+  "summaryJa": "ポーカープレイヤーが現在のミニマムレイズの金額を確認するためにディーラーに質問する場面です。トーナメント中に複雑なベッティングシチュエーションが生じた時、ルールを正確に理解することは重要な英語スキルであり、実際のゲームで頻繁に起こる状況です。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
+  "segments": [
+    "You: Excuse me, dealer. What is the minimum raise here?",
+    "Dealer: The big blind is 200, so the minimum raise is 400 total.",
+    "You: So I need to raise to at least 400?",
+    "Dealer: That's correct. You can raise to 400 or more.",
+    "Opponent: Come on, let's go. Just make your bet.",
+    "You: Okay, I'm raising to 600."
+  ],
+  "keywords": [
+    {
+      "term": "raise",
+      "emoji": "📈"
+    },
+    {
+      "term": "blind",
+      "emoji": "🔵"
+    },
+    {
+      "term": "bet",
+      "emoji": "💰"
+    },
+    {
+      "term": "dealer",
+      "emoji": "🎰"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}
