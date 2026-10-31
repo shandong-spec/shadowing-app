@@ -1,42 +1,33 @@
 {
-  "date": "2026-10-30",
-  "title": "Daniel Negreanu: A Poker Champion",
-  "summaryJa": "ダニエル・ネグレアヌはカナダ出身のプロポーカープレイヤーで、世界中の大きなトーナメントで優勝してきた有名選手です。彼は戦略的なプレイスタイルで知られており、ポーカーの世界で長年成功しています。",
-  "format": "prose",
-  "theme": "実在の有名プレイヤーや大会の紹介",
+  "date": "2026-10-31",
+  "title": "Declaring a Raise at the Table",
+  "summaryJa": "ポーカートーナメントで、プレイヤーが自分の行動（レイズ）をはっきりと宣言し、ディーラーがそれを確認するやり取りです。正確な英語での行動宣言は、テーブルでの誤解を防ぎ、ゲームをスムーズに進めるために重要です。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
   "segments": [
-    "Daniel Negreanu is a famous poker player from Canada. He was born in Toronto.",
-    "Negreanu is one of the best poker players in the world. He has won many big poker games and tournaments.",
-    "People know him for his smart playing style and his big smile. Negreanu has played in many famous poker tournaments.",
-    "He plays cash games and tournament games. He likes to play Texas Hold'em.",
-    "Negreanu is very good at reading other players. He can see their hands through their actions and their faces.",
-    "This skill helps him win many pots. Negreanu has won important titles in his career.",
-    "He is popular with poker fans around the world. He appears on television and in poker videos.",
-    "Many new poker players watch him to learn good strategies. He shows that you need skill and experience to win at poker.",
-    "Today, Negreanu is still a top player. He plays in tournaments and cash games.",
-    "He teaches other players about poker strategy. His long career shows that poker is not just luck.",
-    "It takes hard work, thinking, and practice to become a great player."
+    "You: I raise to 5,000.",
+    "Dealer: Raise to 5,000. I have it.",
+    "Opponent: That's a big raise. How many chips do you have left?",
+    "You: About 12,000 behind.",
+    "Dealer: Action on you.",
+    "Opponent: I call."
   ],
   "keywords": [
     {
-      "term": "tournaments",
-      "emoji": "🏆"
+      "term": "raise",
+      "emoji": "📈"
     },
     {
-      "term": "poker",
-      "emoji": "🃏"
+      "term": "call",
+      "emoji": "☎️"
     },
     {
-      "term": "pots",
-      "emoji": "💰"
+      "term": "chips",
+      "emoji": "🎰"
     },
     {
-      "term": "hands",
-      "emoji": "🤝"
-    },
-    {
-      "term": "cash games",
-      "emoji": "💵"
+      "term": "action",
+      "emoji": "⚡"
     }
   ],
   "source": "AI-generated (Claude)"

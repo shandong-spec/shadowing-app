@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-31",
+  "title": "Declaring a Raise at the Table",
+  "summaryJa": "ポーカートーナメントで、プレイヤーが自分の行動（レイズ）をはっきりと宣言し、ディーラーがそれを確認するやり取りです。正確な英語での行動宣言は、テーブルでの誤解を防ぎ、ゲームをスムーズに進めるために重要です。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
+  "segments": [
+    "You: I raise to 5,000.",
+    "Dealer: Raise to 5,000. I have it.",
+    "Opponent: That's a big raise. How many chips do you have left?",
+    "You: About 12,000 behind.",
+    "Dealer: Action on you.",
+    "Opponent: I call."
+  ],
+  "keywords": [
+    {
+      "term": "raise",
+      "emoji": "📈"
+    },
+    {
+      "term": "call",
+      "emoji": "☎️"
+    },
+    {
+      "term": "chips",
+      "emoji": "🎰"
+    },
+    {
+      "term": "action",
+      "emoji": "⚡"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}
