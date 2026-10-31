@@ -1,33 +1,33 @@
 {
-  "date": "2026-10-31",
-  "title": "Declaring a Raise at the Table",
-  "summaryJa": "ポーカートーナメントで、プレイヤーが自分の行動（レイズ）をはっきりと宣言し、ディーラーがそれを確認するやり取りです。正確な英語での行動宣言は、テーブルでの誤解を防ぎ、ゲームをスムーズに進めるために重要です。",
+  "date": "2026-11-01",
+  "title": "Requesting a Chip Count During Hand",
+  "summaryJa": "ポーカートーナメント中に、自分のチップ数を確認したいプレイヤーがディーラーに数えてもらうよう依頼しています。試合中にチップ数を把握することはゲーム戦略の重要な部分であり、実際のテーブルでよく使われる表現を学べます。",
   "format": "dialogue",
   "theme": "実践フレーズ会話",
   "segments": [
-    "You: I raise to 5,000.",
-    "Dealer: Raise to 5,000. I have it.",
-    "Opponent: That's a big raise. How many chips do you have left?",
-    "You: About 12,000 behind.",
-    "Dealer: Action on you.",
-    "Opponent: I call."
+    "You: Dealer, can I get a count on my stack, please?",
+    "Dealer: Sure, no problem. One moment.",
+    "Dealer: Okay, you have forty-two thousand, eight hundred.",
+    "You: Thank you.",
+    "Dealer: You're all set. You're next to act.",
+    "You: Got it."
   ],
   "keywords": [
     {
-      "term": "raise",
-      "emoji": "📈"
+      "term": "count",
+      "emoji": "🔢"
     },
     {
-      "term": "call",
-      "emoji": "☎️"
+      "term": "stack",
+      "emoji": "💰"
+    },
+    {
+      "term": "act",
+      "emoji": "🎯"
     },
     {
       "term": "chips",
       "emoji": "🎰"
-    },
-    {
-      "term": "action",
-      "emoji": "⚡"
     }
   ],
   "source": "AI-generated (Claude)"

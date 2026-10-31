@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-01",
+  "title": "Requesting a Chip Count During Hand",
+  "summaryJa": "ポーカートーナメント中に、自分のチップ数を確認したいプレイヤーがディーラーに数えてもらうよう依頼しています。試合中にチップ数を把握することはゲーム戦略の重要な部分であり、実際のテーブルでよく使われる表現を学べます。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
+  "segments": [
+    "You: Dealer, can I get a count on my stack, please?",
+    "Dealer: Sure, no problem. One moment.",
+    "Dealer: Okay, you have forty-two thousand, eight hundred.",
+    "You: Thank you.",
+    "Dealer: You're all set. You're next to act.",
+    "You: Got it."
+  ],
+  "keywords": [
+    {
+      "term": "count",
+      "emoji": "🔢"
+    },
+    {
+      "term": "stack",
+      "emoji": "💰"
+    },
+    {
+      "term": "act",
+      "emoji": "🎯"
+    },
+    {
+      "term": "chips",
+      "emoji": "🎰"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}
