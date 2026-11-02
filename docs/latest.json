@@ -1,32 +1,42 @@
 {
-  "date": "2026-11-01",
-  "title": "Requesting a Chip Count During Hand",
-  "summaryJa": "ポーカートーナメント中に、自分のチップ数を確認したいプレイヤーがディーラーに数えてもらうよう依頼しています。試合中にチップ数を把握することはゲーム戦略の重要な部分であり、実際のテーブルでよく使われる表現を学べます。",
-  "format": "dialogue",
-  "theme": "実践フレーズ会話",
+  "date": "2026-11-02",
+  "title": "How Poker Became Popular Around the World",
+  "summaryJa": "テキサスホールデムは映画やテレビ番組を通じて世界中で人気が高まり、今ではカジュアルなホームゲームから大規模なトーナメントまで様々なレベルで楽しまれています。ポーカーコミュニティはオンラインと対面での交流を通じて成長し、多くの人々にとって身近なゲームになりました。",
+  "format": "prose",
+  "theme": "一般的なポーカー文化・トレンド解説",
   "segments": [
-    "You: Dealer, can I get a count on my stack, please?",
-    "Dealer: Sure, no problem. One moment.",
-    "Dealer: Okay, you have forty-two thousand, eight hundred.",
-    "You: Thank you.",
-    "Dealer: You're all set. You're next to act.",
-    "You: Got it."
+    "Poker has become very popular all over the world. Movies and television shows helped make the game famous.",
+    "When people saw poker on TV, they wanted to learn how to play. Today, millions of people play poker.",
+    "Some play in small home games with friends. Others play in big tournaments for money.",
+    "Online poker changed the game a lot. People can now play poker on computers and phones.",
+    "They can play with people from other countries without leaving home. Online poker is fast and easy.",
+    "Many new players learned poker by playing online first. This made the game grow very quickly in recent years.",
+    "Poker communities also grew in different ways. Some people join poker clubs.",
+    "Others go to casinos to play. Home games are still popular too.",
+    "Friends sit around a table, eat food, and play cards together. These games help people relax and have fun.",
+    "Today, poker is not just a game about money. It is also about friendship and community.",
+    "Young and old people play poker. People from many different countries play together.",
+    "Poker has become a part of popular culture. It is a game that brings people together."
   ],
   "keywords": [
     {
-      "term": "count",
-      "emoji": "🔢"
+      "term": "home games",
+      "emoji": "🏠"
     },
     {
-      "term": "stack",
-      "emoji": "💰"
+      "term": "tournaments",
+      "emoji": "🏆"
     },
     {
-      "term": "act",
-      "emoji": "🎯"
+      "term": "online poker",
+      "emoji": "💻"
     },
     {
-      "term": "chips",
+      "term": "communities",
+      "emoji": "👥"
+    },
+    {
+      "term": "players",
       "emoji": "🎰"
     }
   ],
