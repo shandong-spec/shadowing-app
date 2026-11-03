@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-03",
+  "title": "Complimenting an Opponent After a Showdown",
+  "summaryJa": "トーナメント中に相手との間で友好的な交流が生まれています。このような相手へのリスペクトを示すやり取りは、ポーカーテーブルでの良好な雰囲気を作り、自然な会話スキルを磨くのに役立ちます。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
+  "segments": [
+    "You: That was a nice hand. Good read on the river.",
+    "Opponent: Thanks! I got lucky with the turn card.",
+    "You: No, you played it well. I didn't see it coming.",
+    "Opponent: I appreciate that. Good luck for the rest of the tournament.",
+    "You: You too. Let's make it a good one."
+  ],
+  "keywords": [
+    {
+      "term": "hand",
+      "emoji": "🃏"
+    },
+    {
+      "term": "river",
+      "emoji": "🌊"
+    },
+    {
+      "term": "tournament",
+      "emoji": "🏆"
+    },
+    {
+      "term": "chips",
+      "emoji": "💰"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}
