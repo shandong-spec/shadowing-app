@@ -1,46 +1,33 @@
 {
-  "date": "2026-11-04",
-  "title": "Two Important Texas Hold'em Words: Fold and Bluff",
-  "summaryJa": "テキサスホールデムの基本用語「フォールド」（降りる）と「ブラフ」（ハッタリ）の意味と使い方について説明します。初心者がこれらの言葉を理解することで、ゲームの戦略がより明確になります。",
-  "format": "prose",
-  "theme": "ポーカー用語の解説",
+  "date": "2026-11-05",
+  "title": "Asking the Dealer to Clarify the Minimum Raise",
+  "summaryJa": "ポーカープレイヤーが現在のベットラウンドで最小レイズ額について不確実になり、ディーラーに正確な金額を確認する状況です。トーナメントプレイ中にルールや数字を理解することは、正確な判断と流れをスムーズにするために重要です。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
   "segments": [
-    "Texas Hold'em poker has many special words. Two of the most important words are \"fold\" and \"bluff.",
-    "\" These words help you understand the game. Let's learn what they mean.",
-    "First, let's talk about \"fold. \" To fold means to quit the current hand.",
-    "When you fold, you do not play anymore. You give up your cards and the money you put in.",
-    "You do this when you think your cards are not good enough. For example: A player has two weak cards.",
-    "The other players make big bets. The player decides to fold.",
-    "Now this player is out of the hand. The other players keep playing.",
-    "Next, let's learn about \"bluff. \" A bluff is when you bet or raise money, but your cards are not really good.",
-    "You want other players to think you have better cards than you do. You want them to fold.",
-    "For example: A player has weak cards. But this player bets a lot of money.",
-    "The other players think, \"Maybe this player has strong cards. \" They get scared.",
-    "They fold their cards. Now the first player wins the pot, even though his cards were not the best.",
-    "Both fold and bluff are important skills in Texas Hold'em. Good players use these words every day.",
-    "When you fold, you save money. When you bluff, you can win money with weak cards.",
-    "Learning these two words helps you play better poker."
+    "You: What's the minimum raise from here? I want to make sure I get it right.",
+    "Dealer: The bet in front is 10,000. So your minimum raise is 20,000 total.",
+    "You: Okay, so I need to put in 20,000 more chips?",
+    "Dealer: That's correct. You already have 10,000 in the pot, so 20,000 more makes your raise to 20,000.",
+    "You: Got it, thanks. I'm raising to 20,000.",
+    "Dealer: 20,000 is in. Action is on your opponent."
   ],
   "keywords": [
     {
-      "term": "fold",
-      "emoji": "🚪"
-    },
-    {
-      "term": "bluff",
-      "emoji": "🎭"
+      "term": "raise",
+      "emoji": "📈"
     },
     {
       "term": "bet",
       "emoji": "💰"
     },
     {
-      "term": "pot",
-      "emoji": "🎪"
+      "term": "chips",
+      "emoji": "🎯"
     },
     {
-      "term": "hand",
-      "emoji": "🤚"
+      "term": "action",
+      "emoji": "🔄"
     }
   ],
   "source": "AI-generated (Claude)"
