@@ -1,33 +1,44 @@
 {
-  "date": "2026-11-05",
-  "title": "Asking the Dealer to Clarify the Minimum Raise",
-  "summaryJa": "ポーカープレイヤーが現在のベットラウンドで最小レイズ額について不確実になり、ディーラーに正確な金額を確認する状況です。トーナメントプレイ中にルールや数字を理解することは、正確な判断と流れをスムーズにするために重要です。",
-  "format": "dialogue",
-  "theme": "実践フレーズ会話",
+  "date": "2026-11-06",
+  "title": "Daniel Negreanu: A Poker Champion",
+  "summaryJa": "ダニエル・ネグレアヌはカナダ出身の有名なプロポーカープレイヤーです。彼は世界中の大きなトーナメントで多くの賞を獲得し、ポーカーの歴史に名前を残しています。",
+  "format": "prose",
+  "theme": "実在の有名プレイヤーや大会の紹介",
   "segments": [
-    "You: What's the minimum raise from here? I want to make sure I get it right.",
-    "Dealer: The bet in front is 10,000. So your minimum raise is 20,000 total.",
-    "You: Okay, so I need to put in 20,000 more chips?",
-    "Dealer: That's correct. You already have 10,000 in the pot, so 20,000 more makes your raise to 20,000.",
-    "You: Got it, thanks. I'm raising to 20,000.",
-    "Dealer: 20,000 is in. Action is on your opponent."
+    "Daniel Negreanu is a famous poker player from Canada. He was born in 1979.",
+    "Negreanu started playing poker when he was young. He learned the game quickly and became very good at it.",
+    "Many people think he is one of the best poker players in the world. Negreanu has won many big poker tournaments.",
+    "He has played in the World Series of Poker many times. The World Series of Poker is the biggest poker tournament in the world.",
+    "It happens every year in Las Vegas. Players from all over the world come to play.",
+    "Negreanu has done very well in these tournaments. He has won money and respect from other players.",
+    "Negreanu is known for his good skills at Texas Hold'em. He can read other players well.",
+    "He understands when to bet and when to fold. He knows when other players are bluffing.",
+    "These skills help him win games. Young poker players study how Negreanu plays.",
+    "They want to learn from him. Negreanu also appears on television poker shows.",
+    "Millions of people watch him play on TV. This helps more people learn about poker.",
+    "He teaches people about the game. Negreanu shows that poker takes skill and practice.",
+    "He is a good example for new players who want to get better at Texas Hold'em."
   ],
   "keywords": [
     {
-      "term": "raise",
-      "emoji": "📈"
+      "term": "tournament",
+      "emoji": "🏆"
     },
     {
       "term": "bet",
       "emoji": "💰"
     },
     {
-      "term": "chips",
-      "emoji": "🎯"
+      "term": "fold",
+      "emoji": "🃏"
     },
     {
-      "term": "action",
-      "emoji": "🔄"
+      "term": "bluffing",
+      "emoji": "🎭"
+    },
+    {
+      "term": "Texas Hold'em",
+      "emoji": "♠️"
     }
   ],
   "source": "AI-generated (Claude)"
