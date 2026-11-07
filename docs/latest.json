@@ -1,44 +1,37 @@
 {
-  "date": "2026-11-06",
-  "title": "Daniel Negreanu: A Poker Champion",
-  "summaryJa": "ダニエル・ネグレアヌはカナダ出身の有名なプロポーカープレイヤーです。彼は世界中の大きなトーナメントで多くの賞を獲得し、ポーカーの歴史に名前を残しています。",
-  "format": "prose",
-  "theme": "実在の有名プレイヤーや大会の紹介",
+  "date": "2026-11-07",
+  "title": "Declaring a Raise at the Poker Table",
+  "summaryJa": "ポーカープレイヤーが明確に「レイズ」と宣言し、ディーラーがそれを確認する場面です。賭け額を正確に伝えることは、ゲーム中のトラブルを防ぎ、スムーズな進行を確保するために重要なスキルです。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
   "segments": [
-    "Daniel Negreanu is a famous poker player from Canada. He was born in 1979.",
-    "Negreanu started playing poker when he was young. He learned the game quickly and became very good at it.",
-    "Many people think he is one of the best poker players in the world. Negreanu has won many big poker tournaments.",
-    "He has played in the World Series of Poker many times. The World Series of Poker is the biggest poker tournament in the world.",
-    "It happens every year in Las Vegas. Players from all over the world come to play.",
-    "Negreanu has done very well in these tournaments. He has won money and respect from other players.",
-    "Negreanu is known for his good skills at Texas Hold'em. He can read other players well.",
-    "He understands when to bet and when to fold. He knows when other players are bluffing.",
-    "These skills help him win games. Young poker players study how Negreanu plays.",
-    "They want to learn from him. Negreanu also appears on television poker shows.",
-    "Millions of people watch him play on TV. This helps more people learn about poker.",
-    "He teaches people about the game. Negreanu shows that poker takes skill and practice.",
-    "He is a good example for new players who want to get better at Texas Hold'em."
+    "You: I raise to 500.",
+    "Dealer: 500. Thank you. The action is on you, sir.",
+    "Opponent: Call the 500.",
+    "Dealer: Call. We're heads-up now. Two players.",
+    "You: Good. Let's see the flop.",
+    "Dealer: One moment, please. Blinds are settled. Coming out now."
   ],
   "keywords": [
     {
-      "term": "tournament",
-      "emoji": "🏆"
+      "term": "raise",
+      "emoji": "📈"
     },
     {
-      "term": "bet",
-      "emoji": "💰"
+      "term": "call",
+      "emoji": "✋"
     },
     {
-      "term": "fold",
+      "term": "flop",
       "emoji": "🃏"
     },
     {
-      "term": "bluffing",
-      "emoji": "🎭"
+      "term": "blinds",
+      "emoji": "💰"
     },
     {
-      "term": "Texas Hold'em",
-      "emoji": "♠️"
+      "term": "all-in",
+      "emoji": "🎯"
     }
   ],
   "source": "AI-generated (Claude)"

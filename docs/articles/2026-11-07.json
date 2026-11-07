@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-07",
+  "title": "Declaring a Raise at the Poker Table",
+  "summaryJa": "ポーカープレイヤーが明確に「レイズ」と宣言し、ディーラーがそれを確認する場面です。賭け額を正確に伝えることは、ゲーム中のトラブルを防ぎ、スムーズな進行を確保するために重要なスキルです。",
+  "format": "dialogue",
+  "theme": "実践フレーズ会話",
+  "segments": [
+    "You: I raise to 500.",
+    "Dealer: 500. Thank you. The action is on you, sir.",
+    "Opponent: Call the 500.",
+    "Dealer: Call. We're heads-up now. Two players.",
+    "You: Good. Let's see the flop.",
+    "Dealer: One moment, please. Blinds are settled. Coming out now."
+  ],
+  "keywords": [
+    {
+      "term": "raise",
+      "emoji": "📈"
+    },
+    {
+      "term": "call",
+      "emoji": "✋"
+    },
+    {
+      "term": "flop",
+      "emoji": "🃏"
+    },
+    {
+      "term": "blinds",
+      "emoji": "💰"
+    },
+    {
+      "term": "all-in",
+      "emoji": "🎯"
+    }
+  ],
+  "source": "AI-generated (Claude)"
+}
